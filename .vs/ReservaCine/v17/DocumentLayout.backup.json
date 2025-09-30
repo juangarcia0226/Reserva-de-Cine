@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Juan David\\Documents\\ReservaCine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7515BDBB-DD5D-495A-890B-065B790A692F}|ReservaCine\\ReservaCine.csproj|c:\\users\\juan david\\documents\\reservacine\\reservacine\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7515BDBB-DD5D-495A-890B-065B790A692F}|ReservaCine\\ReservaCine.csproj|solutionrelative:reservacine\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7515BDBB-DD5D-495A-890B-065B790A692F}|ReservaCine\\ReservaCine.csproj|c:\\users\\juan david\\documents\\reservacine\\reservacine\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7515BDBB-DD5D-495A-890B-065B790A692F}|ReservaCine\\ReservaCine.csproj|solutionrelative:reservacine\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7515BDBB-DD5D-495A-890B-065B790A692F}|ReservaCine\\ReservaCine.csproj|c:\\users\\juan david\\documents\\reservacine\\reservacine\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7515BDBB-DD5D-495A-890B-065B790A692F}|ReservaCine\\ReservaCine.csproj|solutionrelative:reservacine\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7515BDBB-DD5D-495A-890B-065B790A692F}|ReservaCine\\ReservaCine.csproj|c:\\users\\juan david\\documents\\reservacine\\reservacine\\crudusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7515BDBB-DD5D-495A-890B-065B790A692F}|ReservaCine\\ReservaCine.csproj|solutionrelative:reservacine\\crudusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7515BDBB-DD5D-495A-890B-065B790A692F}|ReservaCine\\ReservaCine.csproj|c:\\users\\juan david\\documents\\reservacine\\reservacine\\adminhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7515BDBB-DD5D-495A-890B-065B790A692F}|ReservaCine\\ReservaCine.csproj|solutionrelative:reservacine\\adminhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,26 +31,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "ReservaCine\\Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\Form1.Designer.cs",
-              "RelativeToolTip": "ReservaCine\\Form1.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\Form1.cs",
+              "RelativeDocumentMoniker": "ReservaCine\\Form1.cs",
+              "ToolTip": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\Form1.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "ReservaCine\\Form1.cs [Dise\u00F1o]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T21:50:06.696Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-29T20:49:49.832Z",
+              "IsPinned": true,
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1.cs [Dise\u00F1o]",
+              "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\Form1.cs",
               "RelativeDocumentMoniker": "ReservaCine\\Form1.cs",
-              "ToolTip": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\Form1.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ReservaCine\\Form1.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\Form1.cs*",
+              "RelativeToolTip": "ReservaCine\\Form1.cs*",
+              "ViewState": "AgIAAAwAAAAAAAAAAADgvyAAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T20:49:49.832Z",
+              "WhenOpened": "2025-09-30T02:29:12.361Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CrudUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\CrudUsuario.cs",
+              "RelativeDocumentMoniker": "ReservaCine\\CrudUsuario.cs",
+              "ToolTip": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\CrudUsuario.cs",
+              "RelativeToolTip": "ReservaCine\\CrudUsuario.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwCYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T04:05:09.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AdminHome.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\AdminHome.cs",
+              "RelativeDocumentMoniker": "ReservaCine\\AdminHome.cs",
+              "ToolTip": "C:\\Users\\Juan David\\Documents\\ReservaCine\\ReservaCine\\AdminHome.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ReservaCine\\AdminHome.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T02:28:54.159Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]
