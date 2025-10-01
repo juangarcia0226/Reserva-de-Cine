@@ -22,12 +22,15 @@ namespace ReservaCine
 
             //Crear objeto/instanciar
             DbUsuario = new CrudUsuario();
-            DbUsuario.GetUsuarios();
+            Usuarios = DbUsuario.GetUsuarios();
         }
 
         private void Btn_iniciar_login_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(Txt_user_login.Text) || string.IsNullOrWhiteSpace(Txt_pass_login.Text))
+            this.Hide();
+            AdminHome adminHome = new AdminHome();
+            adminHome.Show();
+            /*if(string.IsNullOrWhiteSpace(Txt_user_login.Text) || string.IsNullOrWhiteSpace(Txt_pass_login.Text))
             {
                 Lbl_error_login.Text = "Complete los campos";
                 Lbl_error_login.ForeColor = Color.Red;
@@ -36,9 +39,21 @@ namespace ReservaCine
             {
                 for (int i = 0; i < Usuarios.Count; i++)
                 {
-                    
+                    if (Usuarios[i].Correo == Txt_user_login.Text && Usuarios[i].Contrasena == Txt_pass_login.Text && Usuarios[i].IdRol == 1)
+                    {
+                        this.Hide();
+                        AdminHome adminHome = new AdminHome();
+                        adminHome.Show();
+                        break;
+                    }
+                    else
+                    {
+                        Lbl_error_login.Text = "Correo o contraseña invalida";
+                        Lbl_error_login.ForeColor = Color.Red;
+                    }
                 }
             }
+            */
         }
     }
 }
