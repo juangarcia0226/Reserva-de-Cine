@@ -29,3 +29,13 @@ CREATE TABLE pelicula (
     director NVARCHAR(100),
     reparto NVARCHAR(300)              
 );
+
+CREATE TABLE sala (
+    id_sala INT PRIMARY KEY IDENTITY(1,1),
+    nombre NVARCHAR(50) NOT NULL,
+    capacidad INT NOT NULL,
+    filas INT NOT NULL,
+    columnas INT NOT NULL,
+    tipo NVARCHAR(30),
+    estado BIT NOT NULL DEFAULT 1
+);
