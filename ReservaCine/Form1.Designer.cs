@@ -155,6 +155,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Pnl_login);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Pnl_login.ResumeLayout(false);
             this.Pnl_login.PerformLayout();

@@ -18,3 +18,14 @@ CREATE TABLE usuario (
 
 INSERT INTO usuario (nombre, contrasena, correo, id_rol) 
 VALUES ('Administrador', 'admin123', 'admin@prueba.com', 1);
+
+CREATE TABLE pelicula (
+    id_pelicula INT PRIMARY KEY IDENTITY(1,1),
+    titulo NVARCHAR(150) NOT NULL,
+    descripcion NVARCHAR(MAX),
+    duracion INT,
+    genero NVARCHAR(50),
+    fecha_estreno DATE,
+    director NVARCHAR(100),
+    reparto NVARCHAR(300)              
+);
