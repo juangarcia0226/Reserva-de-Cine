@@ -78,6 +78,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Sala.cs" />
+    <Compile Include="UC_FormPelicula.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_FormPelicula.Designer.cs">
+      <DependentUpon>UC_FormPelicula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ListSala.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ListSala.Designer.cs">
+      <DependentUpon>UC_ListSala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Pelicula.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Pelicula.Designer.cs">
+      <DependentUpon>UC_Pelicula.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuario.cs" />
     <EmbeddedResource Include="AdminHome.resx">
       <DependentUpon>AdminHome.cs</DependentUpon>
@@ -97,6 +115,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UC_FormPelicula.resx">
+      <DependentUpon>UC_FormPelicula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Pelicula.resx">
+      <DependentUpon>UC_Pelicula.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

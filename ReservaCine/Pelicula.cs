@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReservaCine
 {
-    class Pelicula
+    public class Pelicula
     {
         public int IdPelicula {  get; set; }
         public string Titulo { get; set; }

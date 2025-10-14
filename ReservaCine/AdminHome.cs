@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization; //Para el NormalizarTexto()
 
 namespace ReservaCine
 {
@@ -14,9 +15,6 @@ namespace ReservaCine
     {
         private CrudPelicula dbPelicula;
         List<Pelicula> peliculas;
-        private bool menuExpandido = true;
-        private const int MAX_ANCHO = 212, MIN_ANCHO = 40;
-        int idPeliSearch = 0;
         public AdminHome()
         {
             InitializeComponent();
@@ -24,157 +22,121 @@ namespace ReservaCine
             dbPelicula = new CrudPelicula();
             LoadPeliculas();
             Lbl_peliculas.Text = "PELÍCULAS";
-            Lbl_fecha.Text = "Fecha de estreno:";
-            Lbl_btnSala.Text = "SALAS";
         }
-        //Método para cargar las películas al Dgv
+        //Método para cargar las películas al Flp
         private void LoadPeliculas()
         {
             peliculas = dbPelicula.GetPeliculas();
-            Dgv_pelis.DataSource = peliculas;
+
+            Flp_peliculas.Controls.Clear();
+
+            foreach (var peli in peliculas)
+            {
+                var card = new UC_Pelicula();
+                card.IdPelicula = peli.IdPelicula; 
+                card.Configurar(peli.Titulo, peli.Genero, peli.Duracion);
+
+                card.EditarClicked += (s, e) => MostrarFormulario("editar", peli);
+                card.EliminarClicked += (s, e) => EliminarPelicula(peli);
+
+                Flp_peliculas.Controls.Add(card);  
+            }
         }
+
+        private void EliminarPelicula(Pelicula pelicula)
+        {
+            var confirm = MessageBox.Show($"¿Deseas eliminar '{pelicula.Titulo}'?","Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                dbPelicula.DeletePelicula(pelicula.IdPelicula); 
+                LoadPeliculas(); 
+            }
+        }
+
+        private void MostrarFormulario(string accion, Pelicula pelicula = null)
+        {
+            // Limpia cualquier formulario anterior
+            Pnl_form.Controls.Clear();
+
+            var formPelicula = new UC_FormPelicula(accion)
+            {
+                Dock = DockStyle.Fill // Se adapta perfectamente al panel
+            };
+
+            if (accion == "editar" && pelicula != null)
+                formPelicula.CargarDatos(pelicula);
+
+            formPelicula.VolverListado += () =>
+            {
+                Pnl_form.Visible = false;
+                Pnl_form.Controls.Clear();
+                LoadPeliculas();
+            };
+
+            Pnl_form.Controls.Add(formPelicula);
+            Pnl_form.Visible = true;
+            Pnl_form.BringToFront();
+            
+        }
+
         private void AdminHome_Load(object sender, EventArgs e)
         {
-            Txt_titulo.Focus();
-        }
-        private void Btn_guardar_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(Txt_titulo.Text))
-            {
-                if (!int.TryParse(Txt_duracion.Text, out int duracion))
-                {
-                    Lbl_error.Text = "Ingrese una duración valida (Número)";
-                    Lbl_error.ForeColor = Color.Crimson;
-                    return;
-                }
-
-                Pelicula newPelicula = new Pelicula(0, Txt_titulo.Text, Txt_descripcion.Text, duracion, Txt_genero.Text, Dtp_fecha.Value, Txt_director.Text, Txt_reparto.Text);
-                dbPelicula.AddPelicula(newPelicula);
-
-                Lbl_error.Text = "Película guardada correctamente";
-                Lbl_error.ForeColor = Color.SeaGreen;
-                LoadPeliculas();
-            }
-            else 
-            {
-                Lbl_error.Text = "No se ingresó el título de la película";
-                Lbl_error.ForeColor = Color.Crimson;
-            }
-        }
-        private void Btn_buscar_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(Txt_titulo.Text))
-            {
-                string peliculaBusacada = Txt_titulo.Text.Trim();
-
-                Pelicula pelicula = peliculas.FirstOrDefault(p  => p.Titulo.Equals(peliculaBusacada, StringComparison.OrdinalIgnoreCase));
-
-                if (pelicula != null)
-                {
-                    Txt_titulo.Text = pelicula.Titulo;
-                    Txt_descripcion.Text = pelicula.Descripcion;
-                    Txt_duracion.Text = Convert.ToString(pelicula.Duracion);
-                    Txt_genero.Text = pelicula.Genero;
-                    Dtp_fecha.Value = pelicula.FechaEstreno;
-                    Txt_director.Text = pelicula.Director;
-                    Txt_reparto.Text = pelicula.Reparto;
-
-                    idPeliSearch = pelicula.IdPelicula;
-                    Lbl_error.Text = "";
-                }
-                else
-                {
-                    Lbl_error.Text = "La película no está guardada";
-                    Lbl_error.ForeColor = Color.Crimson;
-                }
-            }
-            else
-            {
-                Lbl_error.Text = "No se ingresó el título de la película";
-                Lbl_error.ForeColor = Color.Crimson;
-            }
-        }
-        private void Btn_actualizar_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(Txt_titulo.Text))
-            {
-                if (!int.TryParse(Txt_duracion.Text, out var duracion))
-                {
-                    Lbl_error.Text = "Ingrese una duración valida (Número)";
-                    Lbl_error.ForeColor = Color.Crimson;
-                    return;
-                }
-                if (idPeliSearch != 0)
-                {
-                    Pelicula updatePelicula = new Pelicula(idPeliSearch, Txt_titulo.Text, Txt_descripcion.Text, duracion, Txt_genero.Text, Dtp_fecha.Value, Txt_director.Text, Txt_reparto.Text);
-                    dbPelicula.UpdatePelicula(updatePelicula);
-
-                    Lbl_error.Text = $"Película {updatePelicula.Titulo} actualizada correctamente";
-                    Lbl_error.ForeColor = Color.SeaGreen;
-                    LoadPeliculas();
-                }
-                else
-                {
-                    Lbl_error.Text = "Para actualizar primero tiene que buscar una película";
-                    Lbl_error.ForeColor = Color.Crimson;
-                }
-            }
-            else
-            {
-                Lbl_error.Text = "No se ingresó el título de la película";
-                Lbl_error.ForeColor = Color.Crimson;
-            }
-        }
-        private void Btn_eliminar_Click(object sender, EventArgs e)
-        {
-            if (idPeliSearch != 0) 
-            {
-                dbPelicula.DeletePelicula(idPeliSearch);
-
-                Lbl_error.Text = $"Película {Txt_titulo.Text} ELIMINADA correctamente";
-                Lbl_error.ForeColor = Color.SeaGreen;
-                LoadPeliculas();
-            }
-            else
-            {
-                Lbl_error.Text = "Para eliminar primero tiene que buscar una película";
-                Lbl_error.ForeColor = Color.Crimson;
-            }
-        }
-        private void Btn_sala_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            AdminSala adminSala = new AdminSala();
-            adminSala.Show();
+            Txt_buscar.Focus();
+            LoadPeliculas();
         }
         private void AdminHome_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
-        private void Btn_menu_Click(object sender, EventArgs e)
+
+        private void Btn_salas_Click(object sender, EventArgs e)
         {
-            Tmr_menu.Start();
+            this.Hide();
+            AdminSala adminSala = new AdminSala();
+            adminSala.Show();
         }
-        private void Tmr_menu_Tick(object sender, EventArgs e)
+
+        private void Btn_guardar_Click(object sender, EventArgs e)
         {
-            if (menuExpandido)
+            MostrarFormulario("agregar");
+        }
+
+        private void Txt_buscar_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = NormalizarTexto(Txt_buscar.Text);
+
+            //Si no hay texto, muestra todas las películas
+            if (string.IsNullOrWhiteSpace(filtro))
             {
-                Pnl_menu_left.Width -= 10;
-                if (Pnl_menu_left.Width <= MIN_ANCHO)
-                {
-                    Tmr_menu.Stop();
-                    menuExpandido = false;
-                }
+                LoadPeliculas();
+                return;
             }
-            else
+
+            //Filtra las películas por título contenga el texto buscado
+            var filtradas = peliculas.Where(p => NormalizarTexto(p.Titulo).Contains(filtro)).ToList();
+
+            //Muestra solo las que coinciden
+            Flp_peliculas.Controls.Clear();
+            foreach (var peli in filtradas)
             {
-                Pnl_menu_left.Width += 10;
-                if (Pnl_menu_left.Width >= MAX_ANCHO)
-                {
-                    Tmr_menu.Stop();
-                    menuExpandido = true;
-                }
+                var card = new UC_Pelicula();
+                card.IdPelicula = peli.IdPelicula;
+                card.Configurar(peli.Titulo, peli.Genero, peli.Duracion);
+
+                card.EditarClicked += (s, e2) => MostrarFormulario("editar", peli);
+                card.EliminarClicked += (s, e2) => EliminarPelicula(peli);
+
+                Flp_peliculas.Controls.Add(card);
             }
+        }
+        private string NormalizarTexto(string texto)
+        {
+            return new string(texto
+                .Normalize(NormalizationForm.FormD)
+                .Where(ch => CharUnicodeInfo.GetUnicodeCategory(ch) != UnicodeCategory.NonSpacingMark)
+                .ToArray())
+                .ToLower();
         }
     }
 }
