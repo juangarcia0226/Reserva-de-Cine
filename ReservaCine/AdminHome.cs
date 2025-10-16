@@ -42,10 +42,10 @@ namespace ReservaCine
                 Flp_peliculas.Controls.Add(card);  
             }
         }
-
+        //Este método elimina la película seleccionada
         private void EliminarPelicula(Pelicula pelicula)
         {
-            var confirm = MessageBox.Show($"¿Deseas eliminar '{pelicula.Titulo}'?","Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show($"¿Deseas eliminar la película '{pelicula.Titulo}'?","Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirm == DialogResult.Yes)
             {
@@ -54,18 +54,18 @@ namespace ReservaCine
             }
         }
 
+        //Este método muestra el formulario para editar o agregar una película
         private void MostrarFormulario(string accion, Pelicula pelicula = null)
         {
             // Limpia cualquier formulario anterior
             Pnl_form.Controls.Clear();
 
-            var formPelicula = new UC_FormPelicula(accion)
-            {
-                Dock = DockStyle.Fill // Se adapta perfectamente al panel
-            };
+            var formPelicula = new UC_FormPelicula(accion);
 
             if (accion == "editar" && pelicula != null)
+            {
                 formPelicula.CargarDatos(pelicula);
+            }              
 
             formPelicula.VolverListado += () =>
             {
@@ -77,7 +77,6 @@ namespace ReservaCine
             Pnl_form.Controls.Add(formPelicula);
             Pnl_form.Visible = true;
             Pnl_form.BringToFront();
-            
         }
 
         private void AdminHome_Load(object sender, EventArgs e)
@@ -102,6 +101,7 @@ namespace ReservaCine
             MostrarFormulario("agregar");
         }
 
+        //Método para buscar una película
         private void Txt_buscar_TextChanged(object sender, EventArgs e)
         {
             string filtro = NormalizarTexto(Txt_buscar.Text);
@@ -114,7 +114,7 @@ namespace ReservaCine
             }
 
             //Filtra las películas por título contenga el texto buscado
-            var filtradas = peliculas.Where(p => NormalizarTexto(p.Titulo).Contains(filtro)).ToList();
+            List<Pelicula> filtradas = peliculas.Where(p => NormalizarTexto(p.Titulo).Contains(filtro)).ToList();
 
             //Muestra solo las que coinciden
             Flp_peliculas.Controls.Clear();
@@ -130,13 +130,14 @@ namespace ReservaCine
                 Flp_peliculas.Controls.Add(card);
             }
         }
+        //Quita tildes y pasa a minusculas el texto ingresado
         private string NormalizarTexto(string texto)
         {
             return new string(texto
                 .Normalize(NormalizationForm.FormD)
                 .Where(ch => CharUnicodeInfo.GetUnicodeCategory(ch) != UnicodeCategory.NonSpacingMark)
-                .ToArray())
-                .ToLower();
+                .ToArray()
+            ).ToLower();
         }
     }
 }

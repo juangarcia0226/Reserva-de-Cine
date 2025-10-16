@@ -233,7 +233,7 @@
             // Dtp_fecha
             // 
             this.Dtp_fecha.Checked = true;
-            this.Dtp_fecha.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Dtp_fecha.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Dtp_fecha.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Dtp_fecha.ForeColor = System.Drawing.Color.Black;
             this.Dtp_fecha.Format = System.Windows.Forms.DateTimePickerFormat.Long;

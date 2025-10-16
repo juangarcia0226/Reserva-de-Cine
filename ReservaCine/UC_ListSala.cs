@@ -105,7 +105,7 @@ namespace ReservaCine
             };
             panel.Controls.Add(Lbl_tipo);
 
-            //Label disponible
+            //Label estado
             Lbl_estado = new Label
             {
                 AutoSize = false,
@@ -146,6 +146,8 @@ namespace ReservaCine
             Btn_eliminar.Click += (s, e) => EliminarClicked?.Invoke(this, EventArgs.Empty);
             panel.Controls.Add(Btn_eliminar);
         }
+
+        //Método para mostrar los datos de la sala en la tarjeta(card)
         public void Configurar(string nombre, int capacidad, int filas, int columnas, string tipo, bool estado)
         {
             Lbl_nombre.Text = nombre;

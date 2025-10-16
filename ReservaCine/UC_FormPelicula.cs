@@ -12,9 +12,9 @@ namespace ReservaCine
 {
     public partial class UC_FormPelicula: UserControl
     {
-        private string accion; // "agregar" o "editar"
+        private string accion; //"agregar" o "editar"
         private CrudPelicula dbPelicula;
-        private int idPelicula; // solo se usa al editar
+        private int idPelicula;
 
         public event Action VolverListado;
         public UC_FormPelicula(string accion)
@@ -68,7 +68,7 @@ namespace ReservaCine
 
                 dbPelicula.AddPelicula(newPelicula);
                 Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
-                Lbl_error.Text = $"Película {newPelicula.Titulo} actualizada correctamente.";
+                Lbl_error.Text = $"Película {newPelicula.Titulo} agregada correctamente.";
             }
             else if (accion == "editar")
             {
@@ -82,15 +82,13 @@ namespace ReservaCine
                     Txt_director.Text.Trim(),
                     Txt_reparto.Text.Trim()
                 );
-
                 dbPelicula.UpdatePelicula(updatePelicula);
                 Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
                 Lbl_error.Text = $"Película {updatePelicula.Titulo} actualizada correctamente.";
             }
-
-            //Llama al evento para cerrar el formulario
             VolverListado?.Invoke();
         }
+
         private void Btn_cancelar_Click(object sender, EventArgs e)
         {
             VolverListado?.Invoke();

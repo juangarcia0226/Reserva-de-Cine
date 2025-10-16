@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Pnl_AdminHome = new Guna.UI2.WinForms.Guna2Panel();
-            this.Pnl_form = new Guna.UI2.WinForms.Guna2Panel();
             this.Txt_buscar = new Guna.UI2.WinForms.Guna2TextBox();
             this.Flp_peliculas = new System.Windows.Forms.FlowLayoutPanel();
             this.Lbl_peliculas = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Btn_guardar = new Guna.UI2.WinForms.Guna2Button();
+            this.Pnl_form = new Guna.UI2.WinForms.Guna2Panel();
             this.Pnl_menu_left = new Guna.UI2.WinForms.Guna2Panel();
             this.Btn_salas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_peliculas = new Guna.UI2.WinForms.Guna2Button();
@@ -57,15 +57,6 @@
             this.Pnl_AdminHome.Name = "Pnl_AdminHome";
             this.Pnl_AdminHome.Size = new System.Drawing.Size(928, 643);
             this.Pnl_AdminHome.TabIndex = 0;
-            // 
-            // Pnl_form
-            // 
-            this.Pnl_form.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Pnl_form.Location = new System.Drawing.Point(32, 179);
-            this.Pnl_form.Name = "Pnl_form";
-            this.Pnl_form.Size = new System.Drawing.Size(798, 266);
-            this.Pnl_form.TabIndex = 17;
-            this.Pnl_form.Visible = false;
             // 
             // Txt_buscar
             // 
@@ -126,6 +117,15 @@
             this.Btn_guardar.Text = "Agregar Película";
             this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
             // 
+            // Pnl_form
+            // 
+            this.Pnl_form.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Pnl_form.Location = new System.Drawing.Point(32, 179);
+            this.Pnl_form.Name = "Pnl_form";
+            this.Pnl_form.Size = new System.Drawing.Size(798, 266);
+            this.Pnl_form.TabIndex = 17;
+            this.Pnl_form.Visible = false;
+            // 
             // Pnl_menu_left
             // 
             this.Pnl_menu_left.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -144,6 +144,7 @@
             this.Btn_salas.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_salas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.Btn_salas.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_salas.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Btn_salas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_salas.ForeColor = System.Drawing.Color.White;
             this.Btn_salas.Location = new System.Drawing.Point(0, 278);
@@ -159,6 +160,7 @@
             this.Btn_peliculas.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_peliculas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.Btn_peliculas.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_peliculas.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Btn_peliculas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_peliculas.ForeColor = System.Drawing.Color.White;
             this.Btn_peliculas.Location = new System.Drawing.Point(0, 218);
@@ -193,7 +195,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1142, 663);
+            this.ClientSize = new System.Drawing.Size(1163, 663);
             this.Controls.Add(this.Pnl_menu_left);
             this.Controls.Add(this.Pnl_AdminHome);
             this.Margin = new System.Windows.Forms.Padding(4);

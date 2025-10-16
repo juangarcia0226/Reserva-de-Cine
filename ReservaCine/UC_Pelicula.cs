@@ -116,7 +116,7 @@ namespace ReservaCine
             panel.Controls.Add(Btn_eliminar);
         }
 
-        //Método para configurar el contenido
+        //Método para mostrar el contenido de cada película en la tarejeta(card)
         public void Configurar(string titulo, string genero, int duracion)
         {
             Lbl_titulo.Text = titulo;
