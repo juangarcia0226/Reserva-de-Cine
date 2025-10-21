@@ -77,6 +77,7 @@ namespace ReservaCine
             Pnl_form.Controls.Add(formPelicula);
             Pnl_form.Visible = true;
             Pnl_form.BringToFront();
+
         }
 
         private void AdminHome_Load(object sender, EventArgs e)
