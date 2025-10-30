@@ -100,7 +100,7 @@ namespace ReservaCine
                 );
                 dbSala.UpdateSala(updateSala);
                 Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
-                Lbl_error.Text = $"Película {updateSala.Nombre} actualizada correctamente.";
+                Lbl_error.Text = $"Sala {updateSala.Nombre} actualizada correctamente.";
             }
             VolverListado?.Invoke();
         }

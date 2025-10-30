@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace ReservaCine
 {
-    class Usuario
+    public class Usuario
     {
+        public int IdUsuario { get; set; }
         public string Nombre { get; set; }
         public string Contrasena { get; set; }
         public string Correo { get; set; }
-        public int IdRol { get; set; } 
-        public Usuario(string nombre, string contrasena, string correo, int idrol) 
-        {
+        public int IdRol { get; set; }
+        public Usuario(int id_usuario, string nombre, string contrasena, string correo, int id_rol)
+        { 
+            this.IdUsuario = id_usuario;
             this.Nombre = nombre;
             this.Contrasena = contrasena;
-            this.Correo = correo;
-            this.IdRol = idrol;
+            this.Correo = correo; 
+            this.IdRol = id_rol;
         }
     }
 }
