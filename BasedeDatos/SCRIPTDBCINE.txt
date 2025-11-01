@@ -39,3 +39,12 @@ CREATE TABLE sala (
     tipo NVARCHAR(30),
     estado BIT NOT NULL DEFAULT 1
 );
+
+CREATE TABLE funcion (
+    id_funcion INT PRIMARY KEY IDENTITY(1,1),	
+    descripcion NVARCHAR(50),
+    id_pelicula INT NOT NULL FOREIGN KEY REFERENCES pelicula(id_pelicula),
+    id_sala INT NOT NULL FOREIGN KEY REFERENCES sala(id_sala),
+    fecha DATE NOT NULL,
+    hora NVARCHAR(10) NOT NULL
+);

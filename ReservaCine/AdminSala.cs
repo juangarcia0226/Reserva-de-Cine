@@ -96,6 +96,13 @@ namespace ReservaCine
             adminHome.Show();
         }
 
+        private void Btn_funciones_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminFuncion adminFuncion = new AdminFuncion();
+            adminFuncion.Show();
+        }
+
         private void AdminSala_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();

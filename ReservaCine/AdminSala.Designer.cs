@@ -30,16 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Pnl_sala = new Guna.UI2.WinForms.Guna2Panel();
+            this.Txt_buscar = new Guna.UI2.WinForms.Guna2TextBox();
             this.Flp_salas = new System.Windows.Forms.FlowLayoutPanel();
             this.Btn_guardar = new Guna.UI2.WinForms.Guna2Button();
             this.Lbl_sala = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Pnl_formSala = new Guna.UI2.WinForms.Guna2Panel();
             this.Tmr_sala = new System.Windows.Forms.Timer(this.components);
             this.Pnl_menu_left = new Guna.UI2.WinForms.Guna2Panel();
             this.Btn_salas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_peliculas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_menu = new Guna.UI2.WinForms.Guna2Button();
-            this.Pnl_formSala = new Guna.UI2.WinForms.Guna2Panel();
-            this.Txt_buscar = new Guna.UI2.WinForms.Guna2TextBox();
+            this.Btn_funciones = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_sala.SuspendLayout();
             this.Pnl_menu_left.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +56,29 @@
             this.Pnl_sala.Name = "Pnl_sala";
             this.Pnl_sala.Size = new System.Drawing.Size(924, 639);
             this.Pnl_sala.TabIndex = 3;
+            // 
+            // Txt_buscar
+            // 
+            this.Txt_buscar.BorderRadius = 22;
+            this.Txt_buscar.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Txt_buscar.DefaultText = "";
+            this.Txt_buscar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Txt_buscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Txt_buscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Txt_buscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Txt_buscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Txt_buscar.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.Txt_buscar.ForeColor = System.Drawing.Color.DimGray;
+            this.Txt_buscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Txt_buscar.Location = new System.Drawing.Point(204, 60);
+            this.Txt_buscar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Txt_buscar.Name = "Txt_buscar";
+            this.Txt_buscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.Txt_buscar.PlaceholderText = "Ingrese el nombre de una sala";
+            this.Txt_buscar.SelectedText = "";
+            this.Txt_buscar.Size = new System.Drawing.Size(506, 55);
+            this.Txt_buscar.TabIndex = 22;
+            this.Txt_buscar.TextChanged += new System.EventHandler(this.Txt_buscar_TextChanged);
             // 
             // Flp_salas
             // 
@@ -90,16 +114,25 @@
             this.Lbl_sala.TabIndex = 0;
             this.Lbl_sala.Text = "SALAS";
             // 
+            // Pnl_formSala
+            // 
+            this.Pnl_formSala.Location = new System.Drawing.Point(3, 172);
+            this.Pnl_formSala.Name = "Pnl_formSala";
+            this.Pnl_formSala.Size = new System.Drawing.Size(644, 329);
+            this.Pnl_formSala.TabIndex = 21;
+            this.Pnl_formSala.Visible = false;
+            // 
             // Pnl_menu_left
             // 
             this.Pnl_menu_left.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Pnl_menu_left.Controls.Add(this.Btn_funciones);
             this.Pnl_menu_left.Controls.Add(this.Btn_salas);
             this.Pnl_menu_left.Controls.Add(this.Btn_peliculas);
             this.Pnl_menu_left.Controls.Add(this.Btn_menu);
             this.Pnl_menu_left.Location = new System.Drawing.Point(-1, 0);
             this.Pnl_menu_left.Margin = new System.Windows.Forms.Padding(4);
             this.Pnl_menu_left.Name = "Pnl_menu_left";
-            this.Pnl_menu_left.Size = new System.Drawing.Size(177, 668);
+            this.Pnl_menu_left.Size = new System.Drawing.Size(179, 668);
             this.Pnl_menu_left.TabIndex = 21;
             // 
             // Btn_salas
@@ -148,36 +181,21 @@
             this.Btn_menu.TabIndex = 0;
             this.Btn_menu.Text = "CineX";
             // 
-            // Pnl_formSala
+            // Btn_funciones
             // 
-            this.Pnl_formSala.Location = new System.Drawing.Point(3, 172);
-            this.Pnl_formSala.Name = "Pnl_formSala";
-            this.Pnl_formSala.Size = new System.Drawing.Size(644, 329);
-            this.Pnl_formSala.TabIndex = 21;
-            this.Pnl_formSala.Visible = false;
-            // 
-            // Txt_buscar
-            // 
-            this.Txt_buscar.BorderRadius = 22;
-            this.Txt_buscar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Txt_buscar.DefaultText = "";
-            this.Txt_buscar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Txt_buscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Txt_buscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_buscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_buscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_buscar.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.Txt_buscar.ForeColor = System.Drawing.Color.DimGray;
-            this.Txt_buscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_buscar.Location = new System.Drawing.Point(204, 60);
-            this.Txt_buscar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.Txt_buscar.Name = "Txt_buscar";
-            this.Txt_buscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
-            this.Txt_buscar.PlaceholderText = "Ingrese el nombre de una sala";
-            this.Txt_buscar.SelectedText = "";
-            this.Txt_buscar.Size = new System.Drawing.Size(506, 55);
-            this.Txt_buscar.TabIndex = 22;
-            this.Txt_buscar.TextChanged += new System.EventHandler(this.Txt_buscar_TextChanged);
+            this.Btn_funciones.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_funciones.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_funciones.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_funciones.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_funciones.FillColor = System.Drawing.Color.DeepSkyBlue;
+            this.Btn_funciones.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_funciones.ForeColor = System.Drawing.Color.White;
+            this.Btn_funciones.Location = new System.Drawing.Point(0, 340);
+            this.Btn_funciones.Name = "Btn_funciones";
+            this.Btn_funciones.Size = new System.Drawing.Size(180, 45);
+            this.Btn_funciones.TabIndex = 4;
+            this.Btn_funciones.Text = "Funciones";
+            this.Btn_funciones.Click += new System.EventHandler(this.Btn_funciones_Click);
             // 
             // AdminSala
             // 
@@ -212,5 +230,6 @@
         private Guna.UI2.WinForms.Guna2Button Btn_menu;
         private System.Windows.Forms.FlowLayoutPanel Flp_salas;
         private Guna.UI2.WinForms.Guna2TextBox Txt_buscar;
+        private Guna.UI2.WinForms.Guna2Button Btn_funciones;
     }
 }

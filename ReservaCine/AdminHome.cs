@@ -97,6 +97,12 @@ namespace ReservaCine
             adminSala.Show();
         }
 
+        private void Btn_funciones_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminFuncion adminFuncion = new AdminFuncion();
+            adminFuncion.Show();
+        }
         private void Btn_guardar_Click(object sender, EventArgs e)
         {
             MostrarFormulario("agregar");

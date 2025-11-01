@@ -40,6 +40,7 @@
             this.Btn_peliculas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_menu = new Guna.UI2.WinForms.Guna2Button();
             this.Tmr_menu = new System.Windows.Forms.Timer(this.components);
+            this.Btn_funciones = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_AdminHome.SuspendLayout();
             this.Pnl_menu_left.SuspendLayout();
             this.SuspendLayout();
@@ -129,6 +130,7 @@
             // Pnl_menu_left
             // 
             this.Pnl_menu_left.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Pnl_menu_left.Controls.Add(this.Btn_funciones);
             this.Pnl_menu_left.Controls.Add(this.Btn_salas);
             this.Pnl_menu_left.Controls.Add(this.Btn_peliculas);
             this.Pnl_menu_left.Controls.Add(this.Btn_menu);
@@ -188,6 +190,22 @@
             // 
             this.Tmr_menu.Interval = 10;
             // 
+            // Btn_funciones
+            // 
+            this.Btn_funciones.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_funciones.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_funciones.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_funciones.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_funciones.FillColor = System.Drawing.Color.DeepSkyBlue;
+            this.Btn_funciones.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_funciones.ForeColor = System.Drawing.Color.White;
+            this.Btn_funciones.Location = new System.Drawing.Point(0, 340);
+            this.Btn_funciones.Name = "Btn_funciones";
+            this.Btn_funciones.Size = new System.Drawing.Size(180, 45);
+            this.Btn_funciones.TabIndex = 3;
+            this.Btn_funciones.Text = "Funciones";
+            this.Btn_funciones.Click += new System.EventHandler(this.Btn_funciones_Click);
+            // 
             // AdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -224,5 +242,6 @@
         private Guna.UI2.WinForms.Guna2Button Btn_peliculas;
         private Guna.UI2.WinForms.Guna2TextBox Txt_buscar;
         private Guna.UI2.WinForms.Guna2Panel Pnl_form;
+        private Guna.UI2.WinForms.Guna2Button Btn_funciones;
     }
 }

@@ -74,7 +74,7 @@ namespace ReservaCine
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("DELETE FROM sala WHERE id_sala = @id_sala", conn);
-                cmd.Parameters.AddWithValue("@id_pelicula", id_sala);
+                cmd.Parameters.AddWithValue("@id_sala", id_sala);
                 cmd.ExecuteNonQuery();
             }
         }
