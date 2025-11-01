@@ -96,6 +96,13 @@ namespace ReservaCine
             adminHome.Show();
         }
 
+        private void Btn_usuarios_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminUsuario adminUsuario = new AdminUsuario();
+            adminUsuario.Show();
+        }
+
         private void Btn_funciones_Click(object sender, EventArgs e)
         {
             this.Hide();

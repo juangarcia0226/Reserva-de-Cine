@@ -55,5 +55,10 @@ namespace ReservaCine
             }
             */
         }
+
+        private void Btn_register_login_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

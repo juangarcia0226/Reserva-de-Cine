@@ -108,6 +108,13 @@ namespace ReservaCine
             MostrarFormulario("agregar");
         }
 
+        private void Btn_usuarios_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminUsuario adminUsuario = new AdminUsuario();
+            adminUsuario.Show();
+        }
+
         //Método para buscar una película
         private void Txt_buscar_TextChanged(object sender, EventArgs e)
         {

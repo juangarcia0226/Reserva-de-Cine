@@ -40,6 +40,7 @@
             this.Btn_salas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_peliculas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_menu = new Guna.UI2.WinForms.Guna2Button();
+            this.Btn_usuarios = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_funciones = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_sala.SuspendLayout();
             this.Pnl_menu_left.SuspendLayout();
@@ -125,6 +126,7 @@
             // Pnl_menu_left
             // 
             this.Pnl_menu_left.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Pnl_menu_left.Controls.Add(this.Btn_usuarios);
             this.Pnl_menu_left.Controls.Add(this.Btn_funciones);
             this.Pnl_menu_left.Controls.Add(this.Btn_salas);
             this.Pnl_menu_left.Controls.Add(this.Btn_peliculas);
@@ -181,8 +183,22 @@
             this.Btn_menu.TabIndex = 0;
             this.Btn_menu.Text = "CineX";
             // 
+            // Btn_usuarios
             // Btn_funciones
             // 
+            this.Btn_usuarios.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_usuarios.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_usuarios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_usuarios.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_usuarios.FillColor = System.Drawing.Color.DeepSkyBlue;
+            this.Btn_usuarios.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_usuarios.ForeColor = System.Drawing.Color.White;
+            this.Btn_usuarios.Location = new System.Drawing.Point(0, 408);
+            this.Btn_usuarios.Name = "Btn_usuarios";
+            this.Btn_usuarios.Size = new System.Drawing.Size(180, 45);
+            this.Btn_usuarios.TabIndex = 23;
+            this.Btn_usuarios.Text = "Usuarios";
+            this.Btn_usuarios.Click += new System.EventHandler(this.Btn_usuarios_Click);
             this.Btn_funciones.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_funciones.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_funciones.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -230,6 +246,7 @@
         private Guna.UI2.WinForms.Guna2Button Btn_menu;
         private System.Windows.Forms.FlowLayoutPanel Flp_salas;
         private Guna.UI2.WinForms.Guna2TextBox Txt_buscar;
+        private Guna.UI2.WinForms.Guna2Button Btn_usuarios;
         private Guna.UI2.WinForms.Guna2Button Btn_funciones;
     }
 }

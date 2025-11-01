@@ -125,6 +125,7 @@
             this.Btn_register_login.Size = new System.Drawing.Size(133, 49);
             this.Btn_register_login.TabIndex = 4;
             this.Btn_register_login.Text = "Registrarse";
+            this.Btn_register_login.Click += new System.EventHandler(this.Btn_register_login_Click);
             // 
             // Pnl_login
             // 
