@@ -49,3 +49,4 @@ CREATE TABLE funcion (
     fecha DATE NOT NULL,
     hora NVARCHAR(10) NOT NULL
 );
+
