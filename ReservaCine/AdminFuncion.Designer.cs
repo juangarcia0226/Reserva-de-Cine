@@ -161,7 +161,7 @@
             this.Txt_buscar.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_buscar.ForeColor = System.Drawing.Color.DimGray;
             this.Txt_buscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_buscar.Location = new System.Drawing.Point(204, 60);
+            this.Txt_buscar.Location = new System.Drawing.Point(212, 63);
             this.Txt_buscar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_buscar.Name = "Txt_buscar";
             this.Txt_buscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
