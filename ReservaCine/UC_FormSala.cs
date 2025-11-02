@@ -23,6 +23,12 @@ namespace ReservaCine
             this.accion = accion;
             this.BorderStyle = BorderStyle.FixedSingle;
             dbSala = new CrudSala();
+            Lbl_nombre.Text = "Nombre:";
+            Lbl_capacidad.Text = "Capacidad:";
+            Lbl_filas.Text = "Filas:";
+            Lbl_columnas.Text = "Columnas:";
+            Lbl_tipo.Text = "Tipo:";
+            Lbl_disponible.Text = "Disponible:";
         }
 
         public void CargarDatos(Sala sala)
@@ -41,33 +47,33 @@ namespace ReservaCine
         {
             if (string.IsNullOrWhiteSpace(Txt_nombre.Text))
             {
-                Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
+                Lbl_error.ForeColor = Color.FromArgb(220, 53, 69);
                 Lbl_error.Text = $"Debe ingresar un nombre para la sala";
                 return;
             }
 
             if (!int.TryParse(Txt_capacidad.Text, out int capacidad))
             {
-                Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
+                Lbl_error.ForeColor = Color.FromArgb(220, 53, 69);
                 Lbl_error.Text = $"Capacidad inválida. Ingrese un número entero.";
                 return;
             }
             if (!int.TryParse(Txt_filas.Text, out int filas))
             {
-                Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
+                Lbl_error.ForeColor = Color.FromArgb(220, 53, 69);
                 Lbl_error.Text = $"Filas inválida. Ingrese un número entero.";
                 return;
             }
             if (!int.TryParse(Txt_columnas.Text, out int columnas))
             {
-                Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
+                Lbl_error.ForeColor = Color.FromArgb(220, 53, 69);
                 Lbl_error.Text = $"Columnas inválida. Ingrese un número entero.";
                 return;
             }
 
             if (!Rb_si.Checked && !Rb_no.Checked)
             {
-                Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
+                Lbl_error.ForeColor = Color.FromArgb(220, 53, 69);
                 Lbl_error.Text = $"Marque la disponibilidad de la sala";
                 return;
             }

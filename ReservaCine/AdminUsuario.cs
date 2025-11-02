@@ -20,7 +20,7 @@ namespace ReservaCine
             InitializeComponent();
             dbUsuario = new CrudUsuario();
             LoadUsuarios();
-            Lbl_usuario.Text = "Usuarios";
+            Lbl_usuario.Text = "USUARIOS";
         }
 
         private void LoadUsuarios()
@@ -93,6 +93,13 @@ namespace ReservaCine
             this.Hide();
             AdminSala adminSala = new AdminSala();
             adminSala.Show();
+        }
+
+        private void Btn_funciones_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminFuncion adminFuncion = new AdminFuncion();
+            adminFuncion.Show();
         }
 
         private void AdminUsuario_Load(object sender, EventArgs e)

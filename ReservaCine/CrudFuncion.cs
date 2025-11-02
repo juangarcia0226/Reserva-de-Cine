@@ -28,7 +28,7 @@ namespace ReservaCine
                         (int)reader["id_pelicula"],
                         (int)reader["id_sala"],
                         (DateTime)reader["fecha"],
-                        (string)reader["horario"]
+                        (string)reader["hora"]
                     ));
                 }
             }
@@ -41,7 +41,7 @@ namespace ReservaCine
             using (SqlConnection conn = new SqlConnection(connDB))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO funcion (descripcion, id_pelicula, id_sala, fecha, horario) VALUES (@descripcion, @id_pelicula, @id_sala, @fecha, @horario)", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO funcion (descripcion, id_pelicula, id_sala, fecha, hora) VALUES (@descripcion, @id_pelicula, @id_sala, @fecha, @horario)", conn);
                 cmd.Parameters.AddWithValue("@descripcion", funcion.Descripcion);
                 cmd.Parameters.AddWithValue("@id_pelicula", funcion.IdPelicula);
                 cmd.Parameters.AddWithValue("@id_sala", funcion.IdSala);
@@ -57,12 +57,13 @@ namespace ReservaCine
             using (SqlConnection conn = new SqlConnection(connDB))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE funcion SET descripcion = @descripcion, id_pelicula = @id_pelicula, id_sala = @id_sala, fecha = @fecha, horario = @horario WHERE id_funcion = @id_funcion", conn);
+                SqlCommand cmd = new SqlCommand("UPDATE funcion SET descripcion = @descripcion, id_pelicula = @id_pelicula, id_sala = @id_sala, fecha = @fecha, hora = @horario WHERE id_funcion = @id_funcion", conn);
                 cmd.Parameters.AddWithValue("@descripcion", funcion.Descripcion);
                 cmd.Parameters.AddWithValue("@id_pelicula", funcion.IdPelicula);
                 cmd.Parameters.AddWithValue("@id_sala", funcion.IdSala);
                 cmd.Parameters.AddWithValue("@fecha", funcion.Fecha);
                 cmd.Parameters.AddWithValue("@horario", funcion.Horario);
+                cmd.Parameters.AddWithValue("@id_funcion", funcion.IdFuncion);
                 cmd.ExecuteNonQuery();
             }
         }

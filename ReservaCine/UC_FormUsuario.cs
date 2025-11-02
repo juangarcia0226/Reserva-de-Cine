@@ -84,9 +84,9 @@ namespace ReservaCine
             {
                 Usuario newUsuario = new Usuario(
                     0,
-                    Txt_name_user.Text,
-                    Txt_pass_register.Text,
-                    Txt_mail.Text,
+                    Txt_name_user.Text.Trim(),
+                    Txt_pass_register.Text.Trim(),
+                    Txt_mail.Text.Trim(),
                     (Cbx_usuario.SelectedItem.ToString() == "Administrador" ? 1 : 2)
                 );
                 dbUsuario.AddUsuario(newUsuario);
@@ -97,9 +97,9 @@ namespace ReservaCine
             {
                 Usuario updateUsuario = new Usuario(
                     idUsuario,
-                    Txt_name_user.Text,
-                    Txt_pass_register.Text,
-                    Txt_mail.Text,
+                    Txt_name_user.Text.Trim(),
+                    Txt_pass_register.Text.Trim(),
+                    Txt_mail.Text.Trim(),
                     (Cbx_usuario.SelectedItem.ToString() == "Administrador" ? 1 : 2)
                 );
                 dbUsuario.UpdateUsuario(updateUsuario);

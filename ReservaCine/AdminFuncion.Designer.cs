@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.Pnl_menu_left = new Guna.UI2.WinForms.Guna2Panel();
+            this.Btn_usuarios = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_funciones = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_salas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_peliculas = new Guna.UI2.WinForms.Guna2Button();
@@ -46,6 +47,7 @@
             // Pnl_menu_left
             // 
             this.Pnl_menu_left.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Pnl_menu_left.Controls.Add(this.Btn_usuarios);
             this.Pnl_menu_left.Controls.Add(this.Btn_funciones);
             this.Pnl_menu_left.Controls.Add(this.Btn_salas);
             this.Pnl_menu_left.Controls.Add(this.Btn_peliculas);
@@ -55,6 +57,22 @@
             this.Pnl_menu_left.Name = "Pnl_menu_left";
             this.Pnl_menu_left.Size = new System.Drawing.Size(182, 671);
             this.Pnl_menu_left.TabIndex = 22;
+            // 
+            // Btn_usuarios
+            // 
+            this.Btn_usuarios.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_usuarios.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_usuarios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_usuarios.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_usuarios.FillColor = System.Drawing.Color.DeepSkyBlue;
+            this.Btn_usuarios.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_usuarios.ForeColor = System.Drawing.Color.White;
+            this.Btn_usuarios.Location = new System.Drawing.Point(2, 400);
+            this.Btn_usuarios.Name = "Btn_usuarios";
+            this.Btn_usuarios.Size = new System.Drawing.Size(180, 45);
+            this.Btn_usuarios.TabIndex = 24;
+            this.Btn_usuarios.Text = "Usuarios";
+            this.Btn_usuarios.Click += new System.EventHandler(this.Btn_usuarios_Click);
             // 
             // Btn_funciones
             // 
@@ -85,6 +103,7 @@
             this.Btn_salas.Size = new System.Drawing.Size(180, 45);
             this.Btn_salas.TabIndex = 2;
             this.Btn_salas.Text = "Salas";
+            this.Btn_salas.Click += new System.EventHandler(this.Btn_salas_Click);
             // 
             // Btn_peliculas
             // 
@@ -100,6 +119,7 @@
             this.Btn_peliculas.Size = new System.Drawing.Size(180, 45);
             this.Btn_peliculas.TabIndex = 1;
             this.Btn_peliculas.Text = "Películas";
+            this.Btn_peliculas.Click += new System.EventHandler(this.Btn_peliculas_Click);
             // 
             // Btn_menu
             // 
@@ -149,11 +169,12 @@
             this.Txt_buscar.SelectedText = "";
             this.Txt_buscar.Size = new System.Drawing.Size(506, 55);
             this.Txt_buscar.TabIndex = 22;
+            this.Txt_buscar.TextChanged += new System.EventHandler(this.Txt_buscar_TextChanged);
             // 
             // Flp_funciones
             // 
             this.Flp_funciones.AutoScroll = true;
-            this.Flp_funciones.Location = new System.Drawing.Point(22, 123);
+            this.Flp_funciones.Location = new System.Drawing.Point(19, 138);
             this.Flp_funciones.Name = "Flp_funciones";
             this.Flp_funciones.Size = new System.Drawing.Size(902, 375);
             this.Flp_funciones.TabIndex = 16;
@@ -172,6 +193,7 @@
             this.Btn_guardar.Size = new System.Drawing.Size(178, 56);
             this.Btn_guardar.TabIndex = 15;
             this.Btn_guardar.Text = "Guardar";
+            this.Btn_guardar.Click += new System.EventHandler(this.Btn_guardar_Click);
             // 
             // Lbl_funcion
             // 
@@ -185,9 +207,9 @@
             // 
             // Pnl_formFuncion
             // 
-            this.Pnl_formFuncion.Location = new System.Drawing.Point(3, 172);
+            this.Pnl_formFuncion.Location = new System.Drawing.Point(3, 193);
             this.Pnl_formFuncion.Name = "Pnl_formFuncion";
-            this.Pnl_formFuncion.Size = new System.Drawing.Size(644, 329);
+            this.Pnl_formFuncion.Size = new System.Drawing.Size(654, 317);
             this.Pnl_formFuncion.TabIndex = 21;
             this.Pnl_formFuncion.Visible = false;
             // 
@@ -195,12 +217,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1163, 667);
             this.Controls.Add(this.Pnl_funcion);
             this.Controls.Add(this.Pnl_menu_left);
             this.Name = "AdminFuncion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminFuncion";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdminFuncion_FormClosing);
+            this.Load += new System.EventHandler(this.AdminFuncion_Load);
             this.Pnl_menu_left.ResumeLayout(false);
             this.Pnl_funcion.ResumeLayout(false);
             this.Pnl_funcion.PerformLayout();
@@ -221,5 +247,6 @@
         private Guna.UI2.WinForms.Guna2Button Btn_guardar;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_funcion;
         private Guna.UI2.WinForms.Guna2Panel Pnl_formFuncion;
+        private Guna.UI2.WinForms.Guna2Button Btn_usuarios;
     }
 }

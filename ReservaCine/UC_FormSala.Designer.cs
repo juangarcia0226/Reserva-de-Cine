@@ -40,11 +40,21 @@
             this.Rb_si = new Guna.UI2.WinForms.Guna2RadioButton();
             this.Txt_tipo = new Guna.UI2.WinForms.Guna2TextBox();
             this.Lbl_disponible = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_nombre = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_capacidad = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_filas = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_columnas = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_tipo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Pnl_formSala.SuspendLayout();
             this.SuspendLayout();
             // 
             // Pnl_formSala
             // 
+            this.Pnl_formSala.Controls.Add(this.Lbl_tipo);
+            this.Pnl_formSala.Controls.Add(this.Lbl_columnas);
+            this.Pnl_formSala.Controls.Add(this.Lbl_filas);
+            this.Pnl_formSala.Controls.Add(this.Lbl_capacidad);
+            this.Pnl_formSala.Controls.Add(this.Lbl_nombre);
             this.Pnl_formSala.Controls.Add(this.Btn_cancelar);
             this.Pnl_formSala.Controls.Add(this.Btn_agregar);
             this.Pnl_formSala.Controls.Add(this.Txt_nombre);
@@ -105,7 +115,7 @@
             this.Txt_nombre.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_nombre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Txt_nombre.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_nombre.Location = new System.Drawing.Point(39, 20);
+            this.Txt_nombre.Location = new System.Drawing.Point(39, 49);
             this.Txt_nombre.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_nombre.Name = "Txt_nombre";
             this.Txt_nombre.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -136,7 +146,7 @@
             this.Txt_capacidad.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_capacidad.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Txt_capacidad.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_capacidad.Location = new System.Drawing.Point(234, 20);
+            this.Txt_capacidad.Location = new System.Drawing.Point(234, 49);
             this.Txt_capacidad.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_capacidad.Name = "Txt_capacidad";
             this.Txt_capacidad.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -157,7 +167,7 @@
             this.Txt_filas.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_filas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Txt_filas.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_filas.Location = new System.Drawing.Point(428, 20);
+            this.Txt_filas.Location = new System.Drawing.Point(428, 49);
             this.Txt_filas.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_filas.Name = "Txt_filas";
             this.Txt_filas.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -175,7 +185,7 @@
             this.Rb_no.CheckedState.InnerColor = System.Drawing.Color.White;
             this.Rb_no.CheckedState.InnerOffset = -4;
             this.Rb_no.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.Rb_no.Location = new System.Drawing.Point(512, 163);
+            this.Rb_no.Location = new System.Drawing.Point(512, 174);
             this.Rb_no.Name = "Rb_no";
             this.Rb_no.Size = new System.Drawing.Size(54, 27);
             this.Rb_no.TabIndex = 10;
@@ -197,7 +207,7 @@
             this.Txt_columnas.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_columnas.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Txt_columnas.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_columnas.Location = new System.Drawing.Point(39, 119);
+            this.Txt_columnas.Location = new System.Drawing.Point(39, 130);
             this.Txt_columnas.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_columnas.Name = "Txt_columnas";
             this.Txt_columnas.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -215,7 +225,7 @@
             this.Rb_si.CheckedState.InnerColor = System.Drawing.Color.White;
             this.Rb_si.CheckedState.InnerOffset = -4;
             this.Rb_si.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.Rb_si.Location = new System.Drawing.Point(512, 130);
+            this.Rb_si.Location = new System.Drawing.Point(512, 141);
             this.Rb_si.Name = "Rb_si";
             this.Rb_si.Size = new System.Drawing.Size(44, 27);
             this.Rb_si.TabIndex = 9;
@@ -237,7 +247,7 @@
             this.Txt_tipo.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_tipo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Txt_tipo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_tipo.Location = new System.Drawing.Point(234, 119);
+            this.Txt_tipo.Location = new System.Drawing.Point(234, 130);
             this.Txt_tipo.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_tipo.Name = "Txt_tipo";
             this.Txt_tipo.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -250,11 +260,61 @@
             // 
             this.Lbl_disponible.BackColor = System.Drawing.Color.Transparent;
             this.Lbl_disponible.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_disponible.Location = new System.Drawing.Point(428, 99);
+            this.Lbl_disponible.Location = new System.Drawing.Point(428, 110);
             this.Lbl_disponible.Name = "Lbl_disponible";
             this.Lbl_disponible.Size = new System.Drawing.Size(87, 25);
             this.Lbl_disponible.TabIndex = 8;
             this.Lbl_disponible.Text = "Disponible:";
+            // 
+            // Lbl_nombre
+            // 
+            this.Lbl_nombre.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_nombre.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_nombre.Location = new System.Drawing.Point(39, 16);
+            this.Lbl_nombre.Name = "Lbl_nombre";
+            this.Lbl_nombre.Size = new System.Drawing.Size(70, 25);
+            this.Lbl_nombre.TabIndex = 23;
+            this.Lbl_nombre.Text = "Nombre:";
+            // 
+            // Lbl_capacidad
+            // 
+            this.Lbl_capacidad.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_capacidad.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_capacidad.Location = new System.Drawing.Point(234, 16);
+            this.Lbl_capacidad.Name = "Lbl_capacidad";
+            this.Lbl_capacidad.Size = new System.Drawing.Size(87, 25);
+            this.Lbl_capacidad.TabIndex = 24;
+            this.Lbl_capacidad.Text = "Capacidad:";
+            // 
+            // Lbl_filas
+            // 
+            this.Lbl_filas.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_filas.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_filas.Location = new System.Drawing.Point(428, 16);
+            this.Lbl_filas.Name = "Lbl_filas";
+            this.Lbl_filas.Size = new System.Drawing.Size(39, 25);
+            this.Lbl_filas.TabIndex = 25;
+            this.Lbl_filas.Text = "Filas:";
+            // 
+            // Lbl_columnas
+            // 
+            this.Lbl_columnas.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_columnas.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_columnas.Location = new System.Drawing.Point(39, 97);
+            this.Lbl_columnas.Name = "Lbl_columnas";
+            this.Lbl_columnas.Size = new System.Drawing.Size(83, 25);
+            this.Lbl_columnas.TabIndex = 26;
+            this.Lbl_columnas.Text = "Columnas:";
+            // 
+            // Lbl_tipo
+            // 
+            this.Lbl_tipo.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_tipo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_tipo.Location = new System.Drawing.Point(238, 97);
+            this.Lbl_tipo.Name = "Lbl_tipo";
+            this.Lbl_tipo.Size = new System.Drawing.Size(40, 25);
+            this.Lbl_tipo.TabIndex = 27;
+            this.Lbl_tipo.Text = "Tipo:";
             // 
             // UC_FormSala
             // 
@@ -283,5 +343,10 @@
         private Guna.UI2.WinForms.Guna2RadioButton Rb_si;
         private Guna.UI2.WinForms.Guna2TextBox Txt_tipo;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_disponible;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_tipo;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_columnas;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_filas;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_capacidad;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_nombre;
     }
 }

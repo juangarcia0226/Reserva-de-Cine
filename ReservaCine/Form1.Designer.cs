@@ -36,7 +36,6 @@
             this.Btn_register_login = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_login = new Guna.UI2.WinForms.Guna2Panel();
             this.Lbl_error_login = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.Pnl_login.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,7 +128,6 @@
             // 
             // Pnl_login
             // 
-            this.Pnl_login.Controls.Add(this.guna2DateTimePicker1);
             this.Pnl_login.Controls.Add(this.Lbl_error_login);
             this.Pnl_login.Controls.Add(this.Img_login);
             this.Pnl_login.Controls.Add(this.Btn_register_login);
@@ -149,20 +147,6 @@
             this.Lbl_error_login.Size = new System.Drawing.Size(6, 18);
             this.Lbl_error_login.TabIndex = 5;
             this.Lbl_error_login.Text = ".";
-            // 
-            // guna2DateTimePicker1
-            // 
-            this.guna2DateTimePicker1.Checked = true;
-            this.guna2DateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.guna2DateTimePicker1.Location = new System.Drawing.Point(468, 86);
-            this.guna2DateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.guna2DateTimePicker1.MinDate = new System.DateTime(2025, 10, 26, 0, 0, 0, 0);
-            this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
-            this.guna2DateTimePicker1.ShowUpDown = true;
-            this.guna2DateTimePicker1.Size = new System.Drawing.Size(297, 36);
-            this.guna2DateTimePicker1.TabIndex = 6;
-            this.guna2DateTimePicker1.Value = new System.DateTime(2025, 10, 26, 23, 52, 28, 83);
             // 
             // Form1
             // 
@@ -189,7 +173,6 @@
         private Guna.UI2.WinForms.Guna2Button Btn_register_login;
         private Guna.UI2.WinForms.Guna2Panel Pnl_login;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_error_login;
-        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
     }
 }
 

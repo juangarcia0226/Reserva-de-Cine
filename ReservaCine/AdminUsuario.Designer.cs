@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.Pnl_menu_left = new Guna.UI2.WinForms.Guna2Panel();
+            this.Btn_funciones = new Guna.UI2.WinForms.Guna2Button();
+            this.Btn_usuarios = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_salas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_peliculas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_menu = new Guna.UI2.WinForms.Guna2Button();
@@ -38,7 +40,6 @@
             this.Btn_guardar = new Guna.UI2.WinForms.Guna2Button();
             this.Lbl_usuario = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Pnl_formUsuarios = new Guna.UI2.WinForms.Guna2Panel();
-            this.Btn_usuarios = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_menu_left.SuspendLayout();
             this.Pnl_usuario.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,7 @@
             // Pnl_menu_left
             // 
             this.Pnl_menu_left.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Pnl_menu_left.Controls.Add(this.Btn_funciones);
             this.Pnl_menu_left.Controls.Add(this.Btn_usuarios);
             this.Pnl_menu_left.Controls.Add(this.Btn_salas);
             this.Pnl_menu_left.Controls.Add(this.Btn_peliculas);
@@ -55,6 +57,37 @@
             this.Pnl_menu_left.Name = "Pnl_menu_left";
             this.Pnl_menu_left.Size = new System.Drawing.Size(183, 672);
             this.Pnl_menu_left.TabIndex = 22;
+            // 
+            // Btn_funciones
+            // 
+            this.Btn_funciones.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_funciones.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_funciones.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_funciones.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_funciones.FillColor = System.Drawing.Color.DeepSkyBlue;
+            this.Btn_funciones.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_funciones.ForeColor = System.Drawing.Color.White;
+            this.Btn_funciones.Location = new System.Drawing.Point(0, 340);
+            this.Btn_funciones.Name = "Btn_funciones";
+            this.Btn_funciones.Size = new System.Drawing.Size(180, 45);
+            this.Btn_funciones.TabIndex = 25;
+            this.Btn_funciones.Text = "Funciones";
+            this.Btn_funciones.Click += new System.EventHandler(this.Btn_funciones_Click);
+            // 
+            // Btn_usuarios
+            // 
+            this.Btn_usuarios.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_usuarios.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_usuarios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_usuarios.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_usuarios.FillColor = System.Drawing.Color.DeepSkyBlue;
+            this.Btn_usuarios.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_usuarios.ForeColor = System.Drawing.Color.White;
+            this.Btn_usuarios.Location = new System.Drawing.Point(3, 404);
+            this.Btn_usuarios.Name = "Btn_usuarios";
+            this.Btn_usuarios.Size = new System.Drawing.Size(180, 45);
+            this.Btn_usuarios.TabIndex = 24;
+            this.Btn_usuarios.Text = "Usuarios";
             // 
             // Btn_salas
             // 
@@ -180,21 +213,6 @@
             this.Pnl_formUsuarios.TabIndex = 21;
             this.Pnl_formUsuarios.Visible = false;
             // 
-            // Btn_usuarios
-            // 
-            this.Btn_usuarios.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.Btn_usuarios.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.Btn_usuarios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.Btn_usuarios.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.Btn_usuarios.FillColor = System.Drawing.Color.DeepSkyBlue;
-            this.Btn_usuarios.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Btn_usuarios.ForeColor = System.Drawing.Color.White;
-            this.Btn_usuarios.Location = new System.Drawing.Point(3, 446);
-            this.Btn_usuarios.Name = "Btn_usuarios";
-            this.Btn_usuarios.Size = new System.Drawing.Size(180, 45);
-            this.Btn_usuarios.TabIndex = 24;
-            this.Btn_usuarios.Text = "Usuarios";
-            // 
             // AdminUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -229,5 +247,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_usuario;
         private Guna.UI2.WinForms.Guna2Panel Pnl_formUsuarios;
         private Guna.UI2.WinForms.Guna2Button Btn_usuarios;
+        private Guna.UI2.WinForms.Guna2Button Btn_funciones;
     }
 }
