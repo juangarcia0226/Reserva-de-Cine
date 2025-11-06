@@ -144,11 +144,18 @@ namespace ReservaCine
                     return;
                 }
 
+                // Reemplazar caracteres inválidos por guion bajo
+                char[] invalidChars = Path.GetInvalidFileNameChars();
+                foreach (char c in invalidChars)
+                {
+                    titulo = titulo.Replace(c, '_');
+                }
+
                 string extension = Path.GetExtension(openFileDialog.FileName);
                 string nombreArchivo = $"{titulo.Replace(" ", "_")}{extension}";
 
-                // Carpeta destino
-                string carpetaDestino = Path.Combine(Application.StartupPath, @"..\..\ImagenesPeliculas");
+                // Carpeta destino (ruta absoluta limpia)
+                string carpetaDestino = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesPeliculas"));
                 string rutaDestino = Path.Combine(carpetaDestino, nombreArchivo);
 
                 try
@@ -179,7 +186,7 @@ namespace ReservaCine
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error al guardar la imagen: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error al guardar la imagen: {ex.Message}\nRuta: {rutaDestino}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

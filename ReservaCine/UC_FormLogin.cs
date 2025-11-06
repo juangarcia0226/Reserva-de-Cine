@@ -26,6 +26,7 @@ namespace ReservaCine
             Lbl_imagen.Text = "Imagen para la foto de perfil:";
 
             this.BorderStyle = BorderStyle.FixedSingle;
+
         }
         
         private void Btn_imagen_Click(object sender, EventArgs e)
@@ -44,8 +45,9 @@ namespace ReservaCine
                 }
 
                 // Ruta de la carpeta de destino dentro del proyecto
-                string carpetaDestino = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios");
-                carpetaDestino = Path.GetFullPath(carpetaDestino);
+                string carpetaDestino = Path.GetFullPath(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios")
+                );
 
                 // Crear la carpeta si no existe
                 if (!Directory.Exists(carpetaDestino))
@@ -63,16 +65,23 @@ namespace ReservaCine
 
                 try
                 {
-                    // Limpiar correo para usarlo como nombre de archivo (sin @ ni .)
-                    string correoLimpio = Txt_correo.Text.Trim().Replace("@", "_at_").Replace(".", "_dot_");
+                    // Limpiar correo para usarlo como nombre de archivo (sin caracteres inválidos)
+                    string correoLimpio = Txt_correo.Text.Trim()
+                        .Replace("@", "_at_")
+                        .Replace(".", "_dot_");
+
+                    // Reemplazar cualquier carácter inválido del sistema de archivos
+                    char[] invalidChars = Path.GetInvalidFileNameChars();
+                    foreach (char c in invalidChars)
+                        correoLimpio = correoLimpio.Replace(c, '_');
 
                     // Conservar extensión original
                     string extension = Path.GetExtension(ofd.FileName).ToLower();
 
-                    // Crear nombre único: correo_limpio.extensión
+                    // Crear nombre final: correo_limpio.extensión
                     string nombreArchivo = $"{correoLimpio}{extension}";
 
-                    // Construir ruta completa destino
+                    // Construir ruta completa de destino
                     string destino = Path.Combine(carpetaDestino, nombreArchivo);
 
                     // Copiar imagen a la carpeta del proyecto (sobrescribe si ya existe)
@@ -84,8 +93,8 @@ namespace ReservaCine
                         Pbx_imagen.Image = Image.FromStream(stream);
                     }
 
-                    // Guardar el nombre del archivo para la base de datos
-                    this.ImagenSeleccionada = nombreArchivo;
+                    // Guardar la ruta relativa (con carpeta incluida)
+                    this.ImagenSeleccionada = Path.Combine("ImagenesUsuarios", nombreArchivo);
                 }
                 catch (Exception ex)
                 {

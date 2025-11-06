@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +17,16 @@ namespace ReservaCine
         private int idFuncion;
         private CrudFuncion dbFuncion;
         List<Funcion> funciones;
-        public UserFuncion(int idPeli)
+        public UserFuncion(int idPeli, Usuario usuario)
         {
             InitializeComponent();
             dbFuncion = new CrudFuncion();
-            Lbl_funciones.Text = "FUNCIONES";
+            Lbl_funciones.Text = "Funciones";
             LoadFunciones();
             this.idPelicula = idPeli;
+            MostrarInfoPelicula();
+            CargarFotoUsuario(usuario);
+            Lbl_usuario.Text = usuario.Nombre;
         }
         private void LoadFunciones()
         {
@@ -86,6 +90,76 @@ namespace ReservaCine
         private void SeleccionarFuncion(Funcion funcion)
         {
 
+        }
+
+        private void MostrarInfoPelicula()
+        {
+            Pnl_funcionInfo.Controls.Clear();
+            var infoPelicula = new UC_UserFuncionInfo(idPelicula);
+            infoPelicula.Configurar(idPelicula);
+            Pnl_funcionInfo.Controls.Add(infoPelicula);
+        }
+
+        private void CargarFotoUsuario(Usuario usuario)
+        {
+            // Si no hay imagen, usar una ruta relativa por defecto
+            string rutaRelativa = string.IsNullOrEmpty(usuario.Imagen)
+                ? "ImagenesUsuarios\\default.png"
+                : usuario.Imagen;
+
+            // Construir la ruta física completa a partir del directorio base del proyecto
+            string rutaFisica = Path.GetFullPath(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\", rutaRelativa)
+            );
+
+            // Liberar imagen previa para evitar bloqueo
+            if (Pbx_usuario.Image != null)
+            {
+                Pbx_usuario.Image.Dispose();
+                Pbx_usuario.Image = null;
+            }
+
+            // Cargar imagen si existe
+            if (File.Exists(rutaFisica))
+            {
+                using (var stream = new FileStream(rutaFisica, FileMode.Open, FileAccess.Read))
+                {
+                    Pbx_usuario.Image = Image.FromStream(stream);
+                }
+            }
+            else
+            {
+                // Si no existe, carga el placeholder por defecto
+                string rutaDefault = Path.GetFullPath(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios\default.png")
+                );
+
+                if (File.Exists(rutaDefault))
+                {
+                    using (var stream = new FileStream(rutaDefault, FileMode.Open, FileAccess.Read))
+                    {
+                        Pbx_usuario.Image = Image.FromStream(stream);
+                    }
+                }
+                else
+                {
+                    Pbx_usuario.Image = null;
+                }
+            }
+
+            Pbx_usuario.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void UserFuncion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 loginForm = new Form1();
+            loginForm.Show();
         }
     }
 }

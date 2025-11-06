@@ -42,6 +42,7 @@
             this.Btn_peliculas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_menu = new Guna.UI2.WinForms.Guna2Button();
             this.Tmr_menu = new System.Windows.Forms.Timer(this.components);
+            this.Btn_salir = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_AdminHome.SuspendLayout();
             this.Pnl_menu_left.SuspendLayout();
             this.SuspendLayout();
@@ -132,6 +133,7 @@
             // Pnl_menu_left
             // 
             this.Pnl_menu_left.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Pnl_menu_left.Controls.Add(this.Btn_salir);
             this.Pnl_menu_left.Controls.Add(this.Btn_usuarios);
             this.Pnl_menu_left.Controls.Add(this.Btn_funciones);
             this.Pnl_menu_left.Controls.Add(this.Btn_salas);
@@ -229,6 +231,23 @@
             // 
             this.Tmr_menu.Interval = 10;
             // 
+            // Btn_salir
+            // 
+            this.Btn_salir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_salir.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_salir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_salir.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_salir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_salir.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.Btn_salir.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_salir.ForeColor = System.Drawing.Color.White;
+            this.Btn_salir.Location = new System.Drawing.Point(-10, 601);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(180, 45);
+            this.Btn_salir.TabIndex = 4;
+            this.Btn_salir.Text = "Cerrar sesión";
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
+            // 
             // AdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -267,5 +286,6 @@
         private Guna.UI2.WinForms.Guna2Panel Pnl_form;
         private Guna.UI2.WinForms.Guna2Button Btn_usuarios;
         private Guna.UI2.WinForms.Guna2Button Btn_funciones;
+        private Guna.UI2.WinForms.Guna2Button Btn_salir;
     }
 }

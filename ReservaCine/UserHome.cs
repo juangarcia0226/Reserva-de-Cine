@@ -17,14 +17,15 @@ namespace ReservaCine
         private Usuario usuario;
         private CrudPelicula dbPelicula;
         List<Pelicula> peliculas;
-        public UserHome()
+        public UserHome(Usuario usuario)
         {
             InitializeComponent();
             dbPelicula = new CrudPelicula();
             this.usuario = usuario;
-            //Lbl_usuario.Text = usuario.Nombre;
+            Lbl_usuario.Text = usuario.Nombre;
             LoadPeliculas();
-            //CargarFotoUsuario(usuario);
+            CargarFotoUsuario(usuario);
+            Lbl_peliculas.Text = "Películas";
         }
 
         private void LoadPeliculas()
@@ -48,7 +49,7 @@ namespace ReservaCine
         private void MostrarFunciones(Pelicula pelicula)
         {
             this.Hide();
-            UserFuncion userFuncion = new UserFuncion(pelicula.IdPelicula);
+            UserFuncion userFuncion = new UserFuncion(pelicula.IdPelicula, usuario);
             userFuncion.Show();
         }
 
@@ -110,22 +111,24 @@ namespace ReservaCine
         }
         private void CargarFotoUsuario(Usuario usuario)
         {
-            // Si no hay imagen, usar default.png
-            string nombreImagen = string.IsNullOrEmpty(usuario.Imagen) ? "default.png" : usuario.Imagen;
+            // Si no hay imagen, usar una ruta relativa por defecto
+            string rutaRelativa = string.IsNullOrEmpty(usuario.Imagen)
+                ? "ImagenesUsuarios\\default.png"
+                : usuario.Imagen;
 
-            // Ruta física en la carpeta ImagenesUsuarios
-            string carpetaImagenes = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios");
-            string rutaFisica = Path.Combine(carpetaImagenes, nombreImagen);
-            rutaFisica = Path.GetFullPath(rutaFisica);
+            // Construir la ruta física completa a partir del directorio base del proyecto
+            string rutaFisica = Path.GetFullPath(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\", rutaRelativa)
+            );
 
-            // Liberar imagen previa
+            // Liberar imagen previa para evitar bloqueo
             if (Pbx_usuario.Image != null)
             {
                 Pbx_usuario.Image.Dispose();
                 Pbx_usuario.Image = null;
             }
 
-            // Cargar imagen si existe, si no asignar null o default
+            // Cargar imagen si existe
             if (File.Exists(rutaFisica))
             {
                 using (var stream = new FileStream(rutaFisica, FileMode.Open, FileAccess.Read))
@@ -135,7 +138,22 @@ namespace ReservaCine
             }
             else
             {
-                Pbx_usuario.Image = null;
+                // Si no existe, carga el placeholder por defecto
+                string rutaDefault = Path.GetFullPath(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios\default.png")
+                );
+
+                if (File.Exists(rutaDefault))
+                {
+                    using (var stream = new FileStream(rutaDefault, FileMode.Open, FileAccess.Read))
+                    {
+                        Pbx_usuario.Image = Image.FromStream(stream);
+                    }
+                }
+                else
+                {
+                    Pbx_usuario.Image = null;
+                }
             }
 
             Pbx_usuario.SizeMode = PictureBoxSizeMode.Zoom;

@@ -170,6 +170,12 @@
     <Compile Include="UC_UserFuncion.Designer.cs">
       <DependentUpon>UC_UserFuncion.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_UserFuncionInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_UserFuncionInfo.Designer.cs">
+      <DependentUpon>UC_UserFuncionInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_UserPelicula.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Pelicula.resx">
       <DependentUpon>UC_Pelicula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_UserFuncionInfo.resx">
+      <DependentUpon>UC_UserFuncionInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserFuncion.resx">
       <DependentUpon>UserFuncion.cs</DependentUpon>

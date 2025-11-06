@@ -155,5 +155,12 @@ namespace ReservaCine
                 .ToArray()
             ).ToLower();
         }
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 loginForm = new Form1();
+            loginForm.Show();
+        }
     }
 }

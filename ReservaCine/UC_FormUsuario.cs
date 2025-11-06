@@ -27,7 +27,7 @@ namespace ReservaCine
             Lbl_correo.Text = "Correo:";
             Lbl_contrasena.Text = "Contraseña:";
             Lbl_imagen.Text = "Imagen";
-            
+
             this.accion = accion;
             dbUsuario = new CrudUsuario();
             this.BorderStyle = BorderStyle.FixedSingle;
@@ -50,13 +50,15 @@ namespace ReservaCine
                 Cbx_usuario.SelectedIndex = Cbx_usuario.Items.IndexOf("Usuario"); 
             }
 
-            // Guardar la ruta de imagen existente
-            ImagenSeleccionada = string.IsNullOrEmpty(usuario.Imagen) ? "default.png" : usuario.Imagen;
+            // Guardar la ruta de imagen existente o usar una por defecto
+            ImagenSeleccionada = string.IsNullOrEmpty(usuario.Imagen)
+                ? "ImagenesUsuarios\\default.png"
+                : usuario.Imagen;
 
-            //Construir la ruta física 
-            string carpetaImagenes = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios");
-            string rutaFisica = Path.Combine(carpetaImagenes, ImagenSeleccionada);
-            rutaFisica = Path.GetFullPath(rutaFisica);
+            // Construir la ruta física real desde el proyecto
+            string rutaFisica = Path.GetFullPath(
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\", ImagenSeleccionada)
+            );
 
             // Mostrar la imagen si existe
             if (File.Exists(rutaFisica))
@@ -68,12 +70,16 @@ namespace ReservaCine
                     Pbx_imagen.Image = null;
                 }
 
-                Pbx_imagen.Image = Image.FromFile(rutaFisica);
+                // Cargar sin bloquear el archivo
+                using (var stream = new FileStream(rutaFisica, FileMode.Open, FileAccess.Read))
+                {
+                    Pbx_imagen.Image = Image.FromStream(stream);
+                }
                 Pbx_imagen.SizeMode = PictureBoxSizeMode.Zoom;
             }
             else
             {
-                // Si no existe, puedes cargar un placeholder o limpiar PictureBox
+                // Si no existe, carga un placeholder o limpia
                 Pbx_imagen.Image = null;
             }
         }
@@ -162,8 +168,9 @@ namespace ReservaCine
                 }
 
                 // Ruta de la carpeta de destino dentro del proyecto
-                string carpetaDestino = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios");
-                carpetaDestino = Path.GetFullPath(carpetaDestino);
+                string carpetaDestino = Path.GetFullPath(
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios")
+                );
 
                 // Crear la carpeta si no existe
                 if (!Directory.Exists(carpetaDestino))
@@ -181,8 +188,15 @@ namespace ReservaCine
 
                 try
                 {
-                    // Limpiar correo para usarlo como nombre de archivo (sin @ ni .)
-                    string correoLimpio = Txt_correo.Text.Trim().Replace("@", "_at_").Replace(".", "_dot_");
+                    // Limpiar correo para usarlo como nombre de archivo (sin caracteres inválidos)
+                    string correoLimpio = Txt_correo.Text.Trim()
+                        .Replace("@", "_at_")
+                        .Replace(".", "_dot_");
+
+                    // Reemplazar caracteres no válidos por guion bajo
+                    char[] invalidChars = Path.GetInvalidFileNameChars();
+                    foreach (char c in invalidChars)
+                        correoLimpio = correoLimpio.Replace(c, '_');
 
                     // Conservar extensión original
                     string extension = Path.GetExtension(ofd.FileName).ToLower();
@@ -190,7 +204,7 @@ namespace ReservaCine
                     // Crear nombre único: correo_limpio.extensión
                     string nombreArchivo = $"{correoLimpio}{extension}";
 
-                    // Construir ruta completa destino
+                    // Construir ruta completa de destino
                     string destino = Path.Combine(carpetaDestino, nombreArchivo);
 
                     // Copiar imagen a la carpeta del proyecto (sobrescribe si ya existe)
@@ -202,8 +216,8 @@ namespace ReservaCine
                         Pbx_imagen.Image = Image.FromStream(stream);
                     }
 
-                    // Guardar el nombre del archivo para la base de datos
-                    this.ImagenSeleccionada = nombreArchivo;
+                    // Guardar la ruta relativa (incluye carpeta)
+                    this.ImagenSeleccionada = Path.Combine("ImagenesUsuarios", nombreArchivo);
                 }
                 catch (Exception ex)
                 {

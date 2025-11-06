@@ -36,6 +36,7 @@
             this.Btn_peliculas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_menu = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.Pnl_funcionInfo = new Guna.UI2.WinForms.Guna2Panel();
             this.Lbl_funciones = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Flp_funciones = new System.Windows.Forms.FlowLayoutPanel();
             this.Pnl_menu_left.SuspendLayout();
@@ -94,6 +95,7 @@
             this.Btn_salir.Size = new System.Drawing.Size(180, 45);
             this.Btn_salir.TabIndex = 3;
             this.Btn_salir.Text = "Cerrar sesión";
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
             // Btn_salas
             // 
@@ -144,12 +146,20 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.Pnl_funcionInfo);
             this.guna2Panel1.Controls.Add(this.Lbl_funciones);
             this.guna2Panel1.Controls.Add(this.Flp_funciones);
             this.guna2Panel1.Location = new System.Drawing.Point(186, 12);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(973, 639);
             this.guna2Panel1.TabIndex = 5;
+            // 
+            // Pnl_funcionInfo
+            // 
+            this.Pnl_funcionInfo.Location = new System.Drawing.Point(158, 61);
+            this.Pnl_funcionInfo.Name = "Pnl_funcionInfo";
+            this.Pnl_funcionInfo.Size = new System.Drawing.Size(643, 225);
+            this.Pnl_funcionInfo.TabIndex = 20;
             // 
             // Lbl_funciones
             // 
@@ -166,9 +176,9 @@
             this.Flp_funciones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Flp_funciones.AutoScroll = true;
-            this.Flp_funciones.Location = new System.Drawing.Point(9, 231);
+            this.Flp_funciones.Location = new System.Drawing.Point(9, 292);
             this.Flp_funciones.Name = "Flp_funciones";
-            this.Flp_funciones.Size = new System.Drawing.Size(951, 364);
+            this.Flp_funciones.Size = new System.Drawing.Size(951, 303);
             this.Flp_funciones.TabIndex = 18;
             // 
             // UserFuncion
@@ -182,6 +192,7 @@
             this.Name = "UserFuncion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserFuncion";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserFuncion_FormClosing);
             this.Pnl_menu_left.ResumeLayout(false);
             this.Pnl_menu_left.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pbx_usuario)).EndInit();
@@ -203,5 +214,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_funciones;
         private System.Windows.Forms.FlowLayoutPanel Flp_funciones;
+        private Guna.UI2.WinForms.Guna2Panel Pnl_funcionInfo;
     }
 }

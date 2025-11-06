@@ -26,19 +26,24 @@ namespace ReservaCine
 
             Lbl_correo.Text = "Correo:";
             Lbl_contrasena.Text = "Contraseña: ";
+            Lbl_error_login.ForeColor = Color.DarkGray;
+
+            /*Usuario admin = new Usuario(0, "Admin", "admin@a.com", "admin123", "default.png", 1);
+            CrudUsuario dbUsuario = new CrudUsuario();
+            dbUsuario.AddUsuario(admin);*/
         }
 
         private void Btn_iniciar_login_Click(object sender, EventArgs e)
         {
             /*this.Hide();
             AdminHome adminHome = new AdminHome();
-            adminHome.Show();*/
+            adminHome.Show();
 
             this.Hide();
             UserHome userHome = new UserHome();
-            userHome.Show();
+            userHome.Show(); */
 
-            /*if (string.IsNullOrWhiteSpace(Txt_user_login.Text))
+            if (string.IsNullOrWhiteSpace(Txt_user_login.Text))
             {
                 Lbl_error_login.Text = "Ingrese un correo.";
                 Lbl_error_login.ForeColor = Color.Red;
@@ -72,7 +77,7 @@ namespace ReservaCine
             {
                 Lbl_error_login.Text = "Correo o contraseña inválida";
                 Lbl_error_login.ForeColor = Color.Red;
-            }*/
+            }
         }
 
         private void Btn_register_login_Click(object sender, EventArgs e)

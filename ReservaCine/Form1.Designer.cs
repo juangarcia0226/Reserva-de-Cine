@@ -28,17 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Img_login = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Txt_pass_login = new Guna.UI2.WinForms.Guna2TextBox();
             this.Btn_iniciar_login = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_register_login = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_login = new Guna.UI2.WinForms.Guna2Panel();
+            this.Lbl_contrasena = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_correo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Lbl_error_login = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Txt_user_login = new Guna.UI2.WinForms.Guna2TextBox();
             this.Pnl_form = new Guna.UI2.WinForms.Guna2Panel();
-            this.Lbl_correo = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.Lbl_contrasena = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Pnl_login.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +45,7 @@
             // 
             this.Img_login.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
             this.Img_login.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.Img_login.Image = ((System.Drawing.Image)(resources.GetObject("Img_login.Image")));
+            this.Img_login.Image = global::ReservaCine.Properties.Resources._5127040;
             this.Img_login.ImageOffset = new System.Drawing.Point(0, 0);
             this.Img_login.ImageRotate = 0F;
             this.Img_login.Location = new System.Drawing.Point(378, 64);
@@ -127,6 +126,26 @@
             this.Pnl_login.Size = new System.Drawing.Size(941, 500);
             this.Pnl_login.TabIndex = 5;
             // 
+            // Lbl_contrasena
+            // 
+            this.Lbl_contrasena.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_contrasena.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_contrasena.Location = new System.Drawing.Point(326, 236);
+            this.Lbl_contrasena.Name = "Lbl_contrasena";
+            this.Lbl_contrasena.Size = new System.Drawing.Size(90, 25);
+            this.Lbl_contrasena.TabIndex = 8;
+            this.Lbl_contrasena.Text = "Contrasena";
+            // 
+            // Lbl_correo
+            // 
+            this.Lbl_correo.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_correo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_correo.Location = new System.Drawing.Point(326, 142);
+            this.Lbl_correo.Name = "Lbl_correo";
+            this.Lbl_correo.Size = new System.Drawing.Size(59, 25);
+            this.Lbl_correo.TabIndex = 7;
+            this.Lbl_correo.Text = "Correo:";
+            // 
             // Lbl_error_login
             // 
             this.Lbl_error_login.BackColor = System.Drawing.Color.Transparent;
@@ -169,31 +188,11 @@
             this.Pnl_form.TabIndex = 6;
             this.Pnl_form.Visible = false;
             // 
-            // Lbl_correo
-            // 
-            this.Lbl_correo.BackColor = System.Drawing.Color.Transparent;
-            this.Lbl_correo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_correo.Location = new System.Drawing.Point(326, 142);
-            this.Lbl_correo.Name = "Lbl_correo";
-            this.Lbl_correo.Size = new System.Drawing.Size(59, 25);
-            this.Lbl_correo.TabIndex = 7;
-            this.Lbl_correo.Text = "Correo:";
-            // 
-            // Lbl_contrasena
-            // 
-            this.Lbl_contrasena.BackColor = System.Drawing.Color.Transparent;
-            this.Lbl_contrasena.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_contrasena.Location = new System.Drawing.Point(326, 236);
-            this.Lbl_contrasena.Name = "Lbl_contrasena";
-            this.Lbl_contrasena.Size = new System.Drawing.Size(90, 25);
-            this.Lbl_contrasena.TabIndex = 8;
-            this.Lbl_contrasena.Text = "Contrasena";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(965, 524);
             this.Controls.Add(this.Pnl_login);
             this.Name = "Form1";
