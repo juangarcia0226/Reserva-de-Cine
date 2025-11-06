@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.Pnl_formSala = new Guna.UI2.WinForms.Guna2Panel();
+            this.Lbl_tipo = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_columnas = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_filas = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_capacidad = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_nombre = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Btn_cancelar = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_agregar = new Guna.UI2.WinForms.Guna2Button();
             this.Txt_nombre = new Guna.UI2.WinForms.Guna2TextBox();
@@ -40,11 +45,6 @@
             this.Rb_si = new Guna.UI2.WinForms.Guna2RadioButton();
             this.Txt_tipo = new Guna.UI2.WinForms.Guna2TextBox();
             this.Lbl_disponible = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.Lbl_nombre = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.Lbl_capacidad = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.Lbl_filas = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.Lbl_columnas = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.Lbl_tipo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Pnl_formSala.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,8 +71,59 @@
             this.Pnl_formSala.Size = new System.Drawing.Size(637, 322);
             this.Pnl_formSala.TabIndex = 22;
             // 
+            // Lbl_tipo
+            // 
+            this.Lbl_tipo.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_tipo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_tipo.Location = new System.Drawing.Point(238, 97);
+            this.Lbl_tipo.Name = "Lbl_tipo";
+            this.Lbl_tipo.Size = new System.Drawing.Size(40, 25);
+            this.Lbl_tipo.TabIndex = 27;
+            this.Lbl_tipo.Text = "Tipo:";
+            // 
+            // Lbl_columnas
+            // 
+            this.Lbl_columnas.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_columnas.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_columnas.Location = new System.Drawing.Point(39, 97);
+            this.Lbl_columnas.Name = "Lbl_columnas";
+            this.Lbl_columnas.Size = new System.Drawing.Size(83, 25);
+            this.Lbl_columnas.TabIndex = 26;
+            this.Lbl_columnas.Text = "Columnas:";
+            // 
+            // Lbl_filas
+            // 
+            this.Lbl_filas.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_filas.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_filas.Location = new System.Drawing.Point(428, 16);
+            this.Lbl_filas.Name = "Lbl_filas";
+            this.Lbl_filas.Size = new System.Drawing.Size(39, 25);
+            this.Lbl_filas.TabIndex = 25;
+            this.Lbl_filas.Text = "Filas:";
+            // 
+            // Lbl_capacidad
+            // 
+            this.Lbl_capacidad.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_capacidad.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_capacidad.Location = new System.Drawing.Point(234, 16);
+            this.Lbl_capacidad.Name = "Lbl_capacidad";
+            this.Lbl_capacidad.Size = new System.Drawing.Size(87, 25);
+            this.Lbl_capacidad.TabIndex = 24;
+            this.Lbl_capacidad.Text = "Capacidad:";
+            // 
+            // Lbl_nombre
+            // 
+            this.Lbl_nombre.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_nombre.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_nombre.Location = new System.Drawing.Point(39, 16);
+            this.Lbl_nombre.Name = "Lbl_nombre";
+            this.Lbl_nombre.Size = new System.Drawing.Size(70, 25);
+            this.Lbl_nombre.TabIndex = 23;
+            this.Lbl_nombre.Text = "Nombre:";
+            // 
             // Btn_cancelar
             // 
+            this.Btn_cancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_cancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_cancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_cancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -89,6 +140,7 @@
             // 
             // Btn_agregar
             // 
+            this.Btn_agregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_agregar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_agregar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_agregar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -184,6 +236,7 @@
             this.Rb_no.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Rb_no.CheckedState.InnerColor = System.Drawing.Color.White;
             this.Rb_no.CheckedState.InnerOffset = -4;
+            this.Rb_no.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Rb_no.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Rb_no.Location = new System.Drawing.Point(512, 174);
             this.Rb_no.Name = "Rb_no";
@@ -224,6 +277,7 @@
             this.Rb_si.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Rb_si.CheckedState.InnerColor = System.Drawing.Color.White;
             this.Rb_si.CheckedState.InnerOffset = -4;
+            this.Rb_si.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Rb_si.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Rb_si.Location = new System.Drawing.Point(512, 141);
             this.Rb_si.Name = "Rb_si";
@@ -265,56 +319,6 @@
             this.Lbl_disponible.Size = new System.Drawing.Size(87, 25);
             this.Lbl_disponible.TabIndex = 8;
             this.Lbl_disponible.Text = "Disponible:";
-            // 
-            // Lbl_nombre
-            // 
-            this.Lbl_nombre.BackColor = System.Drawing.Color.Transparent;
-            this.Lbl_nombre.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_nombre.Location = new System.Drawing.Point(39, 16);
-            this.Lbl_nombre.Name = "Lbl_nombre";
-            this.Lbl_nombre.Size = new System.Drawing.Size(70, 25);
-            this.Lbl_nombre.TabIndex = 23;
-            this.Lbl_nombre.Text = "Nombre:";
-            // 
-            // Lbl_capacidad
-            // 
-            this.Lbl_capacidad.BackColor = System.Drawing.Color.Transparent;
-            this.Lbl_capacidad.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_capacidad.Location = new System.Drawing.Point(234, 16);
-            this.Lbl_capacidad.Name = "Lbl_capacidad";
-            this.Lbl_capacidad.Size = new System.Drawing.Size(87, 25);
-            this.Lbl_capacidad.TabIndex = 24;
-            this.Lbl_capacidad.Text = "Capacidad:";
-            // 
-            // Lbl_filas
-            // 
-            this.Lbl_filas.BackColor = System.Drawing.Color.Transparent;
-            this.Lbl_filas.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_filas.Location = new System.Drawing.Point(428, 16);
-            this.Lbl_filas.Name = "Lbl_filas";
-            this.Lbl_filas.Size = new System.Drawing.Size(39, 25);
-            this.Lbl_filas.TabIndex = 25;
-            this.Lbl_filas.Text = "Filas:";
-            // 
-            // Lbl_columnas
-            // 
-            this.Lbl_columnas.BackColor = System.Drawing.Color.Transparent;
-            this.Lbl_columnas.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_columnas.Location = new System.Drawing.Point(39, 97);
-            this.Lbl_columnas.Name = "Lbl_columnas";
-            this.Lbl_columnas.Size = new System.Drawing.Size(83, 25);
-            this.Lbl_columnas.TabIndex = 26;
-            this.Lbl_columnas.Text = "Columnas:";
-            // 
-            // Lbl_tipo
-            // 
-            this.Lbl_tipo.BackColor = System.Drawing.Color.Transparent;
-            this.Lbl_tipo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_tipo.Location = new System.Drawing.Point(238, 97);
-            this.Lbl_tipo.Name = "Lbl_tipo";
-            this.Lbl_tipo.Size = new System.Drawing.Size(40, 25);
-            this.Lbl_tipo.TabIndex = 27;
-            this.Lbl_tipo.Text = "Tipo:";
             // 
             // UC_FormSala
             // 

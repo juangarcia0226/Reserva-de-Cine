@@ -88,7 +88,7 @@
             this.Flp_peliculas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Flp_peliculas.AutoScroll = true;
-            this.Flp_peliculas.Location = new System.Drawing.Point(43, 112);
+            this.Flp_peliculas.Location = new System.Drawing.Point(29, 112);
             this.Flp_peliculas.Name = "Flp_peliculas";
             this.Flp_peliculas.Size = new System.Drawing.Size(877, 428);
             this.Flp_peliculas.TabIndex = 15;
@@ -105,6 +105,7 @@
             // 
             // Btn_guardar
             // 
+            this.Btn_guardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_guardar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_guardar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_guardar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -122,9 +123,9 @@
             // Pnl_form
             // 
             this.Pnl_form.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Pnl_form.Location = new System.Drawing.Point(32, 179);
+            this.Pnl_form.Location = new System.Drawing.Point(3, 189);
             this.Pnl_form.Name = "Pnl_form";
-            this.Pnl_form.Size = new System.Drawing.Size(798, 266);
+            this.Pnl_form.Size = new System.Drawing.Size(798, 325);
             this.Pnl_form.TabIndex = 17;
             this.Pnl_form.Visible = false;
             // 
@@ -139,11 +140,12 @@
             this.Pnl_menu_left.Location = new System.Drawing.Point(0, 1);
             this.Pnl_menu_left.Margin = new System.Windows.Forms.Padding(4);
             this.Pnl_menu_left.Name = "Pnl_menu_left";
-            this.Pnl_menu_left.Size = new System.Drawing.Size(181, 668);
+            this.Pnl_menu_left.Size = new System.Drawing.Size(170, 668);
             this.Pnl_menu_left.TabIndex = 1;
             // 
             // Btn_usuarios
             // 
+            this.Btn_usuarios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_usuarios.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_usuarios.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_usuarios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -160,6 +162,7 @@
             // 
             // Btn_funciones
             // 
+            this.Btn_funciones.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_funciones.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_funciones.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_funciones.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -176,6 +179,7 @@
             // 
             // Btn_salas
             // 
+            this.Btn_salas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_salas.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_salas.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_salas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -192,6 +196,7 @@
             // 
             // Btn_peliculas
             // 
+            this.Btn_peliculas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_peliculas.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_peliculas.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_peliculas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

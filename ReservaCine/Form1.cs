@@ -23,42 +23,82 @@ namespace ReservaCine
             //Crear objeto/instanciar
             DbUsuario = new CrudUsuario();
             Usuarios = DbUsuario.GetUsuarios();
+
+            Lbl_correo.Text = "Correo:";
+            Lbl_contrasena.Text = "Contraseña: ";
         }
 
         private void Btn_iniciar_login_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            /*this.Hide();
             AdminHome adminHome = new AdminHome();
-            adminHome.Show();
-            /*if(string.IsNullOrWhiteSpace(Txt_user_login.Text) || string.IsNullOrWhiteSpace(Txt_pass_login.Text))
+            adminHome.Show();*/
+
+            this.Hide();
+            UserHome userHome = new UserHome();
+            userHome.Show();
+
+            /*if (string.IsNullOrWhiteSpace(Txt_user_login.Text))
             {
-                Lbl_error_login.Text = "Complete los campos";
+                Lbl_error_login.Text = "Ingrese un correo.";
                 Lbl_error_login.ForeColor = Color.Red;
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(Txt_pass_login.Text))
+            {
+                Lbl_error_login.Text = "Ingrese una contraseña.";
+                Lbl_error_login.ForeColor = Color.Red;
+                return;
+            }
+
+            Usuario usuarioEncontrado = Usuarios.FirstOrDefault(u => u.Correo == Txt_user_login.Text);
+
+            if (usuarioEncontrado != null && CifradoPSW.VerificarPassword(Txt_pass_login.Text, usuarioEncontrado.Contrasena))
+            {
+                if (usuarioEncontrado.IdRol == 1) // admin
+                {
+                    this.Hide();
+                    AdminHome adminHome = new AdminHome();
+                    adminHome.Show();
+                }
+                else
+                {
+                    this.Hide();
+                    UserHome userHome = new UserHome(usuarioEncontrado);
+                    userHome.Show();
+                }
             }
             else
             {
-                for (int i = 0; i < Usuarios.Count; i++)
-                {
-                    if (Usuarios[i].Correo == Txt_user_login.Text && Usuarios[i].Contrasena == Txt_pass_login.Text && Usuarios[i].IdRol == 1)
-                    {
-                        this.Hide();
-                        AdminHome adminHome = new AdminHome();
-                        adminHome.Show();
-                        break;
-                    }
-                    else
-                    {
-                        Lbl_error_login.Text = "Correo o contraseña invalida";
-                        Lbl_error_login.ForeColor = Color.Red;
-                    }
-                }
-            }
-            */
+                Lbl_error_login.Text = "Correo o contraseña inválida";
+                Lbl_error_login.ForeColor = Color.Red;
+            }*/
         }
 
         private void Btn_register_login_Click(object sender, EventArgs e)
         {
-            
+            MostrarFormulario();
+        }
+
+        //Este método muestra el formulario para editar o agregar una película
+        private void MostrarFormulario()
+        {
+            // Limpia cualquier formulario anterior
+            Pnl_form.Controls.Clear();
+
+            var formUsuario = new UC_FormLogin();
+
+            formUsuario.VolverLogin += () =>
+            {
+                Pnl_form.Visible = false;
+                Pnl_form.Controls.Clear();
+                Usuarios = DbUsuario.GetUsuarios();
+            };
+
+            Pnl_form.Controls.Add(formUsuario);
+            Pnl_form.Location = new Point(82, 64);
+            Pnl_form.Visible = true;
+            Pnl_form.BringToFront();
         }
     }
 }

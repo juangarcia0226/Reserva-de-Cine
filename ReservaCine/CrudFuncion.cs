@@ -9,13 +9,13 @@ namespace ReservaCine
 {
     class CrudFuncion
     {
-        private string connDB = "Server=localhost;Database=cine;Trusted_Connection=True;";
+        //private string connDB = "Server=localhost;Database=cine;Trusted_Connection=True;";
 
         //Método para traer las funciones de la db
         public List<Funcion> GetFuncion()
         {
             List<Funcion> funciones = new List<Funcion>();
-            using (SqlConnection conn = new SqlConnection(connDB))
+            using (SqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM funcion", conn);
@@ -38,7 +38,7 @@ namespace ReservaCine
         //Método para guardar una nueva función en la db
         public void AddFuncion(Funcion funcion)
         {
-            using (SqlConnection conn = new SqlConnection(connDB))
+            using (SqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("INSERT INTO funcion (descripcion, id_pelicula, id_sala, fecha, hora) VALUES (@descripcion, @id_pelicula, @id_sala, @fecha, @horario)", conn);
@@ -54,7 +54,7 @@ namespace ReservaCine
         //Método para actualizar una función
         public void UpdateFuncion(Funcion funcion)
         {
-            using (SqlConnection conn = new SqlConnection(connDB))
+            using (SqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("UPDATE funcion SET descripcion = @descripcion, id_pelicula = @id_pelicula, id_sala = @id_sala, fecha = @fecha, hora = @horario WHERE id_funcion = @id_funcion", conn);
@@ -71,7 +71,7 @@ namespace ReservaCine
         // Método para eliminar una función
         public void DeleteFuncion(int id_funcion)
         {
-            using (SqlConnection conn = new SqlConnection(connDB))
+            using (SqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("DELETE FROM funcion WHERE id_funcion = @id_funcion", conn);

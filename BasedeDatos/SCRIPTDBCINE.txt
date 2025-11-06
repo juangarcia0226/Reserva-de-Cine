@@ -12,13 +12,14 @@ INSERT INTO rol (nombre_rol) VALUES ('Usuario')
 CREATE TABLE usuario (
     id_usuario INT IDENTITY(1,1) PRIMARY KEY,
     nombre NVARCHAR(50) NOT NULL,
-    contrasena NVARCHAR(255) NOT NULL,
     correo NVARCHAR(100) NOT NULL UNIQUE,
+    contrasena NVARCHAR(255) NOT NULL, 
+    imagen NVARCHAR(255),
     id_rol INT NOT NULL FOREIGN KEY REFERENCES rol(id_rol)
 );
 
-INSERT INTO usuario (nombre, contrasena, correo, id_rol) 
-VALUES ('Administrador', 'admin123', 'admin@prueba.com', 1);
+INSERT INTO usuario (nombre, correo, contrasena, id_rol) 
+VALUES ('Administrador', 'admin@prueba.com', 'admin123', 1);
 
 CREATE TABLE pelicula (
     id_pelicula INT PRIMARY KEY IDENTITY(1,1),
@@ -28,7 +29,7 @@ CREATE TABLE pelicula (
     genero NVARCHAR(50),
     fecha_estreno DATE,
     director NVARCHAR(100),
-    reparto NVARCHAR(300)              
+    imagen NVARCHAR(255)
 );
 
 CREATE TABLE sala (

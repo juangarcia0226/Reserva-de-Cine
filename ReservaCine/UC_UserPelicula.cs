@@ -12,34 +12,25 @@ using System.IO;
 
 namespace ReservaCine
 {
-    public partial class UC_Pelicula: UserControl
+    public partial class UC_UserPelicula : UserControl
     {
         public int IdPelicula { get; set; }
+        public event EventHandler Seleccionar;
 
-        // Eventos para que el formulario principal los escuche
-        public event EventHandler EditarClicked;
-        public event EventHandler EliminarClicked;
-
-        // Controles
         private Guna2Panel panel;
         private Label Lbl_titulo;
-        private Label Lbl_genero;
-        private Label Lbl_duracion;
-        private Guna2Button Btn_editar;
-        private Guna2Button Btn_eliminar;
+        private Guna2Button Btn_seleccionar;
         private Guna2PictureBox Pbx_imagen;
-
-        public UC_Pelicula()
+        public UC_UserPelicula()
         {
             InitializeComponent();
             InicializarUI();
         }
 
-        //Configura toda la parte visual del UC
         private void InicializarUI()
         {
             //Configuración del UC
-            this.Size = new Size(300, 150);
+            this.Size = new Size(200, 300);
             this.Margin = new Padding(10);
 
             //Panel principal
@@ -47,23 +38,11 @@ namespace ReservaCine
             {
                 BorderRadius = 10,
                 FillColor = Color.FromArgb(245, 245, 245),
-                Size = new Size(300, 150),
+                Size = new Size(200, 300),
                 Dock = DockStyle.Fill,
                 ShadowDecoration = { Enabled = true, Depth = 5 }
             };
             this.Controls.Add(panel);
-
-            // PictureBox para la imagen de la película
-            Pbx_imagen = new Guna2PictureBox
-            {
-                Size = new Size(100, 75),
-                Location = new Point(160, 15),
-                BorderRadius = 8,
-                SizeMode = PictureBoxSizeMode.Zoom,
-                FillColor = Color.LightGray,
-                BorderStyle = BorderStyle.FixedSingle
-            };
-            panel.Controls.Add(Pbx_imagen);
 
             //Label Título
             Lbl_titulo = new Label
@@ -73,69 +52,41 @@ namespace ReservaCine
                 ForeColor = Color.Black,
                 TextAlign = ContentAlignment.MiddleLeft,
                 Location = new Point(18, 15),
-                Size = new Size(160, 25)
+                Size = new Size(190, 25)
             };
             panel.Controls.Add(Lbl_titulo);
 
-            //Label Género
-            Lbl_genero = new Label
+            // PictureBox para la imagen de la película
+            Pbx_imagen = new Guna2PictureBox
             {
-                AutoSize = false,
-                Font = new Font("Segoe UI", 9),
-                ForeColor = Color.DimGray,
-                Location = new Point(18, 50),
-                Size = new Size(260, 20)
+                Size = new Size(150, 200),
+                Location = new Point(24, 50),
+                BorderRadius = 8,
+                SizeMode = PictureBoxSizeMode.Zoom,
+                FillColor = Color.LightGray,
+                BorderStyle = BorderStyle.FixedSingle
             };
-            panel.Controls.Add(Lbl_genero);
+            panel.Controls.Add(Pbx_imagen);
 
-            //Label Duración
-            Lbl_duracion = new Label
+            //Botón seleccionar
+            Btn_seleccionar = new Guna2Button
             {
-                AutoSize = false,
-                Font = new Font("Segoe UI", 9),
-                ForeColor = Color.DimGray,
-                Location = new Point(18, 75),
-                Size = new Size(260, 20)
-            };
-            panel.Controls.Add(Lbl_duracion);
-
-            //Botón Editar
-            Btn_editar = new Guna2Button
-            {
-                Text = "Editar",
+                Text = "Seleccionar",
                 FillColor = Color.FromArgb(255, 193, 7),
-                ForeColor = Color.Black,
-                Font = new Font("Segoe UI", 9, FontStyle.Bold),
-                Size = new Size(100, 35),
-                Location = new Point(18, 110),
-                BorderRadius = 6,
-                Cursor = Cursors.Hand
-            };
-            Btn_editar.Click += (s, e) => EditarClicked?.Invoke(this, EventArgs.Empty);
-            panel.Controls.Add(Btn_editar);
-
-            //Botón Eliminar
-            Btn_eliminar = new Guna2Button
-            {
-                Text = "Eliminar",
-                FillColor = Color.FromArgb(220, 53, 69),
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 9, FontStyle.Bold),
                 Size = new Size(100, 35),
-                Location = new Point(160, 110),
+                Location = new Point(50, 260),
                 BorderRadius = 6,
                 Cursor = Cursors.Hand
             };
-            Btn_eliminar.Click += (s, e) => EliminarClicked?.Invoke(this, EventArgs.Empty);
-            panel.Controls.Add(Btn_eliminar);
+            Btn_seleccionar.Click += (s, e) => Seleccionar?.Invoke(this, EventArgs.Empty);
+            panel.Controls.Add(Btn_seleccionar);
         }
 
-        //Método para mostrar el contenido de cada película en la tarejeta(card)
-        public void Configurar(string titulo, string genero, int duracion, string rutaImagen)
+        public void Configurar(string titulo, string rutaImagen)
         {
             Lbl_titulo.Text = titulo;
-            Lbl_genero.Text = "Género: " + genero;
-            Lbl_duracion.Text = "Duración: " + duracion + " min";
 
             try
             {
@@ -175,14 +126,9 @@ namespace ReservaCine
             }
         }
 
-        private void Btn_editar_Click(object sender, EventArgs e)
+        private void Btn_seleccionar_Click(object sender, EventArgs e)
         {
-            EditarClicked?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void Btn_eliminar_Click(object sender, EventArgs e)
-        {
-            EliminarClicked?.Invoke(this, EventArgs.Empty);
+            Seleccionar?.Invoke(this, EventArgs.Empty);
         }
     }
 }

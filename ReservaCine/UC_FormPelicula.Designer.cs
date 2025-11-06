@@ -29,40 +29,116 @@
         private void InitializeComponent()
         {
             this.Pnl_datos = new Guna.UI2.WinForms.Guna2Panel();
+            this.Lbl_imagen = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_director = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_duracion = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_genero = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_descripcion = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Lbl_titulo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Btn_cancelar = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_aceptar = new Guna.UI2.WinForms.Guna2Button();
             this.Txt_titulo = new Guna.UI2.WinForms.Guna2TextBox();
             this.Txt_descripcion = new Guna.UI2.WinForms.Guna2TextBox();
             this.Txt_duracion = new Guna.UI2.WinForms.Guna2TextBox();
             this.Txt_genero = new Guna.UI2.WinForms.Guna2TextBox();
-            this.Txt_reparto = new Guna.UI2.WinForms.Guna2TextBox();
             this.Lbl_error = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Txt_director = new Guna.UI2.WinForms.Guna2TextBox();
             this.Dtp_fecha = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.Lbl_fecha = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Btn_imagen = new Guna.UI2.WinForms.Guna2Button();
+            this.Pbx_imagen = new Guna.UI2.WinForms.Guna2PictureBox();
             this.Pnl_datos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pbx_imagen)).BeginInit();
             this.SuspendLayout();
             // 
             // Pnl_datos
             // 
+            this.Pnl_datos.Controls.Add(this.Pbx_imagen);
+            this.Pnl_datos.Controls.Add(this.Btn_imagen);
+            this.Pnl_datos.Controls.Add(this.Lbl_imagen);
+            this.Pnl_datos.Controls.Add(this.Lbl_director);
+            this.Pnl_datos.Controls.Add(this.Lbl_duracion);
+            this.Pnl_datos.Controls.Add(this.Lbl_genero);
+            this.Pnl_datos.Controls.Add(this.Lbl_descripcion);
+            this.Pnl_datos.Controls.Add(this.Lbl_titulo);
             this.Pnl_datos.Controls.Add(this.Btn_cancelar);
             this.Pnl_datos.Controls.Add(this.Btn_aceptar);
             this.Pnl_datos.Controls.Add(this.Txt_titulo);
             this.Pnl_datos.Controls.Add(this.Txt_descripcion);
             this.Pnl_datos.Controls.Add(this.Txt_duracion);
             this.Pnl_datos.Controls.Add(this.Txt_genero);
-            this.Pnl_datos.Controls.Add(this.Txt_reparto);
             this.Pnl_datos.Controls.Add(this.Lbl_error);
             this.Pnl_datos.Controls.Add(this.Txt_director);
             this.Pnl_datos.Controls.Add(this.Dtp_fecha);
             this.Pnl_datos.Controls.Add(this.Lbl_fecha);
             this.Pnl_datos.Location = new System.Drawing.Point(3, 3);
             this.Pnl_datos.Name = "Pnl_datos";
-            this.Pnl_datos.Size = new System.Drawing.Size(787, 258);
+            this.Pnl_datos.Size = new System.Drawing.Size(792, 319);
             this.Pnl_datos.TabIndex = 17;
+            // 
+            // Lbl_imagen
+            // 
+            this.Lbl_imagen.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_imagen.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_imagen.Location = new System.Drawing.Point(572, 97);
+            this.Lbl_imagen.Name = "Lbl_imagen";
+            this.Lbl_imagen.Size = new System.Drawing.Size(65, 25);
+            this.Lbl_imagen.TabIndex = 24;
+            this.Lbl_imagen.Text = "Imagen:";
+            // 
+            // Lbl_director
+            // 
+            this.Lbl_director.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_director.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_director.Location = new System.Drawing.Point(370, 97);
+            this.Lbl_director.Name = "Lbl_director";
+            this.Lbl_director.Size = new System.Drawing.Size(68, 25);
+            this.Lbl_director.TabIndex = 23;
+            this.Lbl_director.Text = "Director:";
+            // 
+            // Lbl_duracion
+            // 
+            this.Lbl_duracion.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_duracion.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_duracion.Location = new System.Drawing.Point(604, 14);
+            this.Lbl_duracion.Name = "Lbl_duracion";
+            this.Lbl_duracion.Size = new System.Drawing.Size(76, 25);
+            this.Lbl_duracion.TabIndex = 22;
+            this.Lbl_duracion.Text = "Duración:";
+            // 
+            // Lbl_genero
+            // 
+            this.Lbl_genero.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_genero.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_genero.Location = new System.Drawing.Point(408, 14);
+            this.Lbl_genero.Name = "Lbl_genero";
+            this.Lbl_genero.Size = new System.Drawing.Size(63, 25);
+            this.Lbl_genero.TabIndex = 21;
+            this.Lbl_genero.Text = "Genero:";
+            // 
+            // Lbl_descripcion
+            // 
+            this.Lbl_descripcion.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_descripcion.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_descripcion.Location = new System.Drawing.Point(215, 14);
+            this.Lbl_descripcion.Name = "Lbl_descripcion";
+            this.Lbl_descripcion.Size = new System.Drawing.Size(95, 25);
+            this.Lbl_descripcion.TabIndex = 20;
+            this.Lbl_descripcion.Text = "Descripción:";
+            // 
+            // Lbl_titulo
+            // 
+            this.Lbl_titulo.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_titulo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_titulo.Location = new System.Drawing.Point(16, 14);
+            this.Lbl_titulo.Name = "Lbl_titulo";
+            this.Lbl_titulo.Size = new System.Drawing.Size(50, 25);
+            this.Lbl_titulo.TabIndex = 19;
+            this.Lbl_titulo.Text = "Título:";
             // 
             // Btn_cancelar
             // 
+            this.Btn_cancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_cancelar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_cancelar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_cancelar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -70,7 +146,7 @@
             this.Btn_cancelar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.Btn_cancelar.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Btn_cancelar.ForeColor = System.Drawing.Color.White;
-            this.Btn_cancelar.Location = new System.Drawing.Point(408, 201);
+            this.Btn_cancelar.Location = new System.Drawing.Point(408, 260);
             this.Btn_cancelar.Name = "Btn_cancelar";
             this.Btn_cancelar.Size = new System.Drawing.Size(148, 45);
             this.Btn_cancelar.TabIndex = 18;
@@ -79,6 +155,7 @@
             // 
             // Btn_aceptar
             // 
+            this.Btn_aceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_aceptar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_aceptar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_aceptar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -86,7 +163,7 @@
             this.Btn_aceptar.FillColor = System.Drawing.Color.MediumSeaGreen;
             this.Btn_aceptar.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Btn_aceptar.ForeColor = System.Drawing.Color.Black;
-            this.Btn_aceptar.Location = new System.Drawing.Point(215, 201);
+            this.Btn_aceptar.Location = new System.Drawing.Point(215, 260);
             this.Btn_aceptar.Name = "Btn_aceptar";
             this.Btn_aceptar.Size = new System.Drawing.Size(148, 45);
             this.Btn_aceptar.TabIndex = 17;
@@ -105,7 +182,7 @@
             this.Txt_titulo.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_titulo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Txt_titulo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_titulo.Location = new System.Drawing.Point(14, 18);
+            this.Txt_titulo.Location = new System.Drawing.Point(14, 47);
             this.Txt_titulo.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_titulo.Name = "Txt_titulo";
             this.Txt_titulo.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -126,7 +203,7 @@
             this.Txt_descripcion.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_descripcion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Txt_descripcion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_descripcion.Location = new System.Drawing.Point(215, 18);
+            this.Txt_descripcion.Location = new System.Drawing.Point(215, 47);
             this.Txt_descripcion.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_descripcion.Name = "Txt_descripcion";
             this.Txt_descripcion.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -147,7 +224,7 @@
             this.Txt_duracion.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_duracion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Txt_duracion.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_duracion.Location = new System.Drawing.Point(604, 18);
+            this.Txt_duracion.Location = new System.Drawing.Point(604, 47);
             this.Txt_duracion.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_duracion.Name = "Txt_duracion";
             this.Txt_duracion.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -168,7 +245,7 @@
             this.Txt_genero.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_genero.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Txt_genero.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_genero.Location = new System.Drawing.Point(408, 18);
+            this.Txt_genero.Location = new System.Drawing.Point(408, 47);
             this.Txt_genero.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_genero.Name = "Txt_genero";
             this.Txt_genero.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -177,33 +254,12 @@
             this.Txt_genero.Size = new System.Drawing.Size(172, 38);
             this.Txt_genero.TabIndex = 5;
             // 
-            // Txt_reparto
-            // 
-            this.Txt_reparto.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Txt_reparto.DefaultText = "";
-            this.Txt_reparto.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Txt_reparto.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Txt_reparto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_reparto.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Txt_reparto.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_reparto.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.Txt_reparto.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Txt_reparto.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_reparto.Location = new System.Drawing.Point(570, 101);
-            this.Txt_reparto.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.Txt_reparto.Name = "Txt_reparto";
-            this.Txt_reparto.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Txt_reparto.PlaceholderText = "Reparto";
-            this.Txt_reparto.SelectedText = "";
-            this.Txt_reparto.Size = new System.Drawing.Size(172, 38);
-            this.Txt_reparto.TabIndex = 6;
-            // 
             // Lbl_error
             // 
             this.Lbl_error.BackColor = System.Drawing.Color.Transparent;
             this.Lbl_error.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_error.ForeColor = System.Drawing.Color.SeaGreen;
-            this.Lbl_error.Location = new System.Drawing.Point(202, 160);
+            this.Lbl_error.Location = new System.Drawing.Point(202, 219);
             this.Lbl_error.Name = "Lbl_error";
             this.Lbl_error.Size = new System.Drawing.Size(7, 25);
             this.Lbl_error.TabIndex = 11;
@@ -221,7 +277,7 @@
             this.Txt_director.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.Txt_director.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Txt_director.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Txt_director.Location = new System.Drawing.Point(368, 101);
+            this.Txt_director.Location = new System.Drawing.Point(370, 124);
             this.Txt_director.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Txt_director.Name = "Txt_director";
             this.Txt_director.PlaceholderForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -237,7 +293,7 @@
             this.Dtp_fecha.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Dtp_fecha.ForeColor = System.Drawing.Color.Black;
             this.Dtp_fecha.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.Dtp_fecha.Location = new System.Drawing.Point(14, 101);
+            this.Dtp_fecha.Location = new System.Drawing.Point(16, 124);
             this.Dtp_fecha.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.Dtp_fecha.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.Dtp_fecha.Name = "Dtp_fecha";
@@ -249,11 +305,36 @@
             // 
             this.Lbl_fecha.BackColor = System.Drawing.Color.Transparent;
             this.Lbl_fecha.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_fecha.Location = new System.Drawing.Point(14, 74);
+            this.Lbl_fecha.Location = new System.Drawing.Point(16, 97);
             this.Lbl_fecha.Name = "Lbl_fecha";
             this.Lbl_fecha.Size = new System.Drawing.Size(137, 25);
             this.Lbl_fecha.TabIndex = 9;
             this.Lbl_fecha.Text = "Fecha de estreno:";
+            // 
+            // Btn_imagen
+            // 
+            this.Btn_imagen.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_imagen.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_imagen.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_imagen.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_imagen.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_imagen.ForeColor = System.Drawing.Color.White;
+            this.Btn_imagen.Location = new System.Drawing.Point(572, 124);
+            this.Btn_imagen.Name = "Btn_imagen";
+            this.Btn_imagen.Size = new System.Drawing.Size(171, 33);
+            this.Btn_imagen.TabIndex = 25;
+            this.Btn_imagen.Text = "Adjuntar imagen";
+            this.Btn_imagen.Click += new System.EventHandler(this.Btn_imagen_Click);
+            // 
+            // Pbx_imagen
+            // 
+            this.Pbx_imagen.ImageRotate = 0F;
+            this.Pbx_imagen.Location = new System.Drawing.Point(604, 163);
+            this.Pbx_imagen.Name = "Pbx_imagen";
+            this.Pbx_imagen.Size = new System.Drawing.Size(110, 99);
+            this.Pbx_imagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Pbx_imagen.TabIndex = 26;
+            this.Pbx_imagen.TabStop = false;
             // 
             // UC_FormPelicula
             // 
@@ -262,9 +343,10 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.Pnl_datos);
             this.Name = "UC_FormPelicula";
-            this.Size = new System.Drawing.Size(798, 266);
+            this.Size = new System.Drawing.Size(798, 325);
             this.Pnl_datos.ResumeLayout(false);
             this.Pnl_datos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Pbx_imagen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -278,10 +360,17 @@
         private Guna.UI2.WinForms.Guna2TextBox Txt_descripcion;
         private Guna.UI2.WinForms.Guna2TextBox Txt_duracion;
         private Guna.UI2.WinForms.Guna2TextBox Txt_genero;
-        private Guna.UI2.WinForms.Guna2TextBox Txt_reparto;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_error;
         private Guna.UI2.WinForms.Guna2TextBox Txt_director;
         private Guna.UI2.WinForms.Guna2DateTimePicker Dtp_fecha;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_fecha;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_imagen;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_director;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_duracion;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_genero;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_descripcion;
+        private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_titulo;
+        private Guna.UI2.WinForms.Guna2Button Btn_imagen;
+        private Guna.UI2.WinForms.Guna2PictureBox Pbx_imagen;
     }
 }

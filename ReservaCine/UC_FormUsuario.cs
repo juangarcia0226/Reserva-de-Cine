@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace ReservaCine
         private string accion; //"agregar" o "editar"
         private CrudUsuario dbUsuario;
         private int idUsuario;
+        public string ImagenSeleccionada { get; set; }
 
         public event Action VolverListado;
         public UC_FormUsuario(string accion)
@@ -24,6 +26,7 @@ namespace ReservaCine
             Lbl_nombre.Text = "Nombre:";
             Lbl_correo.Text = "Correo:";
             Lbl_contrasena.Text = "Contraseña:";
+            Lbl_imagen.Text = "Imagen";
             
             this.accion = accion;
             dbUsuario = new CrudUsuario();
@@ -34,16 +37,44 @@ namespace ReservaCine
         {
             idUsuario = usuario.IdUsuario;
             Txt_name_user.Text = usuario.Nombre;
-            Txt_mail.Text = usuario.Correo;
-            Txt_pass_register.Text = usuario.Contrasena; 
+            Txt_correo.Text = usuario.Correo;
+            Txt_pass_register.Text = usuario.Contrasena;
 
-            if (usuario.IdRol == 1)
-            {
-                Cbx_usuario.SelectedIndex = Cbx_usuario.Items.IndexOf("Administrador");
+            //Asignar el tipo de usuario al ComboBox
+            if (usuario.IdRol == 1) 
+            { 
+                Cbx_usuario.SelectedIndex = Cbx_usuario.Items.IndexOf("Administrador"); 
             }
-            else if (usuario.IdRol == 2)
+            else if (usuario.IdRol == 2) 
+            { 
+                Cbx_usuario.SelectedIndex = Cbx_usuario.Items.IndexOf("Usuario"); 
+            }
+
+            // Guardar la ruta de imagen existente
+            ImagenSeleccionada = string.IsNullOrEmpty(usuario.Imagen) ? "default.png" : usuario.Imagen;
+
+            //Construir la ruta física 
+            string carpetaImagenes = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios");
+            string rutaFisica = Path.Combine(carpetaImagenes, ImagenSeleccionada);
+            rutaFisica = Path.GetFullPath(rutaFisica);
+
+            // Mostrar la imagen si existe
+            if (File.Exists(rutaFisica))
             {
-                Cbx_usuario.SelectedIndex = Cbx_usuario.Items.IndexOf("Usuario");
+                // Liberar cualquier imagen previamente cargada
+                if (Pbx_imagen.Image != null)
+                {
+                    Pbx_imagen.Image.Dispose();
+                    Pbx_imagen.Image = null;
+                }
+
+                Pbx_imagen.Image = Image.FromFile(rutaFisica);
+                Pbx_imagen.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else
+            {
+                // Si no existe, puedes cargar un placeholder o limpiar PictureBox
+                Pbx_imagen.Image = null;
             }
         }
 
@@ -61,7 +92,7 @@ namespace ReservaCine
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(Txt_mail.Text))
+            if (string.IsNullOrWhiteSpace(Txt_correo.Text))
             {
                 Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
                 Lbl_error.Text = $"Debe ingresar un correo.";
@@ -80,14 +111,19 @@ namespace ReservaCine
                 return;
             }
 
+            //Sino se ingreso imagen por defecto es 'default.png'
+            string imagen = string.IsNullOrEmpty(ImagenSeleccionada) ? "default.png" : ImagenSeleccionada;
+
             if (accion == "agregar")
             {
                 Usuario newUsuario = new Usuario(
                     0,
                     Txt_name_user.Text.Trim(),
+                    Txt_correo.Text.Trim(),
                     Txt_pass_register.Text.Trim(),
-                    Txt_mail.Text.Trim(),
+                    imagen,
                     (Cbx_usuario.SelectedItem.ToString() == "Administrador" ? 1 : 2)
+
                 );
                 dbUsuario.AddUsuario(newUsuario);
                 Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
@@ -98,8 +134,9 @@ namespace ReservaCine
                 Usuario updateUsuario = new Usuario(
                     idUsuario,
                     Txt_name_user.Text.Trim(),
+                    Txt_correo.Text.Trim(),
                     Txt_pass_register.Text.Trim(),
-                    Txt_mail.Text.Trim(),
+                    imagen,
                     (Cbx_usuario.SelectedItem.ToString() == "Administrador" ? 1 : 2)
                 );
                 dbUsuario.UpdateUsuario(updateUsuario);
@@ -107,6 +144,73 @@ namespace ReservaCine
                 Lbl_error.Text = $"Usuario {updateUsuario.IdUsuario} actualizado correctamente.";
             }
             VolverListado?.Invoke();
+        }
+
+        private void Btn_imagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Imágenes|*.jpg;*.jpeg;*.png";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                // Verificar que el usuario haya escrito un correo antes
+                if (string.IsNullOrWhiteSpace(Txt_correo.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese su correo antes de seleccionar la imagen.",
+                                    "Correo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Ruta de la carpeta de destino dentro del proyecto
+                string carpetaDestino = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios");
+                carpetaDestino = Path.GetFullPath(carpetaDestino);
+
+                // Crear la carpeta si no existe
+                if (!Directory.Exists(carpetaDestino))
+                    Directory.CreateDirectory(carpetaDestino);
+
+                // Validar tamaño del archivo (< 2 MB)
+                FileInfo infoArchivo = new FileInfo(ofd.FileName);
+                long maxBytes = 2 * 1024 * 1024; // 2 MB
+                if (infoArchivo.Length > maxBytes)
+                {
+                    MessageBox.Show("El tamaño máximo permitido es de 2 MB.",
+                                    "Archivo demasiado grande", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                try
+                {
+                    // Limpiar correo para usarlo como nombre de archivo (sin @ ni .)
+                    string correoLimpio = Txt_correo.Text.Trim().Replace("@", "_at_").Replace(".", "_dot_");
+
+                    // Conservar extensión original
+                    string extension = Path.GetExtension(ofd.FileName).ToLower();
+
+                    // Crear nombre único: correo_limpio.extensión
+                    string nombreArchivo = $"{correoLimpio}{extension}";
+
+                    // Construir ruta completa destino
+                    string destino = Path.Combine(carpetaDestino, nombreArchivo);
+
+                    // Copiar imagen a la carpeta del proyecto (sobrescribe si ya existe)
+                    File.Copy(ofd.FileName, destino, true);
+
+                    // Mostrar imagen sin bloquear el archivo
+                    using (var stream = new FileStream(destino, FileMode.Open, FileAccess.Read))
+                    {
+                        Pbx_imagen.Image = Image.FromStream(stream);
+                    }
+
+                    // Guardar el nombre del archivo para la base de datos
+                    this.ImagenSeleccionada = nombreArchivo;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen: " + ex.Message,
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

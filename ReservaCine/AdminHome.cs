@@ -34,7 +34,7 @@ namespace ReservaCine
             {
                 var card = new UC_Pelicula();
                 card.IdPelicula = peli.IdPelicula; 
-                card.Configurar(peli.Titulo, peli.Genero, peli.Duracion);
+                card.Configurar(peli.Titulo, peli.Genero, peli.Duracion, peli.Imagen);
 
                 card.EditarClicked += (s, e) => MostrarFormulario("editar", peli);
                 card.EliminarClicked += (s, e) => EliminarPelicula(peli);
@@ -75,6 +75,7 @@ namespace ReservaCine
             };
 
             Pnl_form.Controls.Add(formPelicula);
+            Pnl_form.Location = new Point(67, 178);
             Pnl_form.Visible = true;
             Pnl_form.BringToFront();
 
@@ -136,7 +137,7 @@ namespace ReservaCine
             {
                 var card = new UC_Pelicula();
                 card.IdPelicula = peli.IdPelicula;
-                card.Configurar(peli.Titulo, peli.Genero, peli.Duracion);
+                card.Configurar(peli.Titulo, peli.Genero, peli.Duracion, peli.Imagen);
 
                 card.EditarClicked += (s, e2) => MostrarFormulario("editar", peli);
                 card.EliminarClicked += (s, e2) => EliminarPelicula(peli);
@@ -144,6 +145,7 @@ namespace ReservaCine
                 Flp_peliculas.Controls.Add(card);
             }
         }
+
         //Quita tildes y pasa a minusculas el texto ingresado
         private string NormalizarTexto(string texto)
         {

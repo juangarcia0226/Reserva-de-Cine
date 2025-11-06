@@ -55,11 +55,12 @@
             this.Pnl_menu_left.Location = new System.Drawing.Point(-4, 0);
             this.Pnl_menu_left.Margin = new System.Windows.Forms.Padding(4);
             this.Pnl_menu_left.Name = "Pnl_menu_left";
-            this.Pnl_menu_left.Size = new System.Drawing.Size(183, 672);
+            this.Pnl_menu_left.Size = new System.Drawing.Size(170, 668);
             this.Pnl_menu_left.TabIndex = 22;
             // 
             // Btn_funciones
             // 
+            this.Btn_funciones.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_funciones.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_funciones.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_funciones.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -76,6 +77,7 @@
             // 
             // Btn_usuarios
             // 
+            this.Btn_usuarios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_usuarios.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_usuarios.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_usuarios.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -91,6 +93,7 @@
             // 
             // Btn_salas
             // 
+            this.Btn_salas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_salas.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_salas.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_salas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -107,6 +110,7 @@
             // 
             // Btn_peliculas
             // 
+            this.Btn_peliculas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_peliculas.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_peliculas.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_peliculas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -181,6 +185,7 @@
             // 
             // Btn_guardar
             // 
+            this.Btn_guardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_guardar.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.Btn_guardar.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.Btn_guardar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -209,7 +214,7 @@
             // 
             this.Pnl_formUsuarios.Location = new System.Drawing.Point(3, 168);
             this.Pnl_formUsuarios.Name = "Pnl_formUsuarios";
-            this.Pnl_formUsuarios.Size = new System.Drawing.Size(776, 323);
+            this.Pnl_formUsuarios.Size = new System.Drawing.Size(753, 334);
             this.Pnl_formUsuarios.TabIndex = 21;
             this.Pnl_formUsuarios.Visible = false;
             // 

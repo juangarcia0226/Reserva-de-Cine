@@ -10,13 +10,13 @@ namespace ReservaCine
 {
     class CrudPelicula
     {
-        private string connDB = "Server=localhost;Database=cine;Trusted_Connection=True;";
+        //private string connDB = "Server=localhost;Database=cine;Trusted_Connection=True;";
         
         //Método para traer las películas de la db
         public List<Pelicula> GetPeliculas()
         {
             List<Pelicula> peliculas = new List<Pelicula>();
-            using (SqlConnection conn = new SqlConnection(connDB))
+            using (SqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM pelicula", conn);
@@ -31,7 +31,7 @@ namespace ReservaCine
                         (string)reader["genero"],
                         (DateTime)reader["fecha_estreno"],
                         (string)reader["director"],
-                        (string)reader["reparto"]
+                        reader["imagen"] != DBNull.Value ? (string)reader["imagen"] : ""
                     ));
                 }
             }
@@ -40,34 +40,34 @@ namespace ReservaCine
         //Método para guardar una nueva película en la db
         public void AddPelicula (Pelicula pelicula)
         {
-            using (SqlConnection conn = new SqlConnection(connDB))
+            using (SqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO pelicula (titulo, descripcion, duracion, genero, fecha_estreno, director, reparto) VALUES (@titulo, @descripcion, @duracion, @genero, @fecha_estreno, @director, @reparto)", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO pelicula (titulo, descripcion, duracion, genero, fecha_estreno, director, imagen) VALUES (@titulo, @descripcion, @duracion, @genero, @fecha_estreno, @director, @imagen)", conn);
                 cmd.Parameters.AddWithValue("@titulo", pelicula.Titulo);
                 cmd.Parameters.AddWithValue("@descripcion", pelicula.Descripcion);
                 cmd.Parameters.AddWithValue("@duracion", pelicula.Duracion);
                 cmd.Parameters.AddWithValue("@genero", pelicula.Genero);
                 cmd.Parameters.AddWithValue("@fecha_estreno", pelicula.FechaEstreno);
                 cmd.Parameters.AddWithValue("@director", pelicula.Director);
-                cmd.Parameters.AddWithValue("@reparto", pelicula.Reparto);
+                cmd.Parameters.AddWithValue("@imagen", pelicula.Imagen ?? "");
                 cmd.ExecuteNonQuery();
             }
         }
         //Método para actualizar una pelícual
         public void UpdatePelicula(Pelicula pelicula)
         {
-            using (SqlConnection conn = new SqlConnection(connDB))
+            using (SqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE pelicula SET titulo = @titulo, descripcion = @descripcion, duracion = @duracion, genero = @genero, fecha_estreno = @fecha_estreno, director = @director, reparto = @reparto WHERE id_pelicula = @id_pelicula", conn);
+                SqlCommand cmd = new SqlCommand("UPDATE pelicula SET titulo = @titulo, descripcion = @descripcion, duracion = @duracion, genero = @genero, fecha_estreno = @fecha_estreno, director = @director, imagen = @imagen WHERE id_pelicula = @id_pelicula", conn);
                 cmd.Parameters.AddWithValue("@titulo", pelicula.Titulo);
                 cmd.Parameters.AddWithValue("@descripcion", pelicula.Descripcion);
                 cmd.Parameters.AddWithValue("@duracion", pelicula.Duracion);
                 cmd.Parameters.AddWithValue("@genero", pelicula.Genero);
                 cmd.Parameters.AddWithValue("@fecha_estreno", pelicula.FechaEstreno);
                 cmd.Parameters.AddWithValue("@director", pelicula.Director);
-                cmd.Parameters.AddWithValue("@reparto", pelicula.Reparto);
+                cmd.Parameters.AddWithValue("@imagen", pelicula.Imagen ?? "");
                 cmd.Parameters.AddWithValue("@id_pelicula", pelicula.IdPelicula);
                 cmd.ExecuteNonQuery();
             }
@@ -75,7 +75,7 @@ namespace ReservaCine
         // Método para eliminar una película
         public void DeletePelicula(int id_pelicula)
         {
-            using (SqlConnection conn = new SqlConnection(connDB))
+            using (SqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("DELETE FROM pelicula WHERE id_pelicula = @id_pelicula", conn);
