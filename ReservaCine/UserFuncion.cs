@@ -104,7 +104,7 @@ namespace ReservaCine
         {
             // Si no hay imagen, usar una ruta relativa por defecto
             string rutaRelativa = string.IsNullOrEmpty(usuario.Imagen)
-                ? "ImagenesUsuarios\\default.png"
+                ? "ImagenesUsuarios\\default.jpg"
                 : usuario.Imagen;
 
             // Construir la ruta física completa a partir del directorio base del proyecto
@@ -131,7 +131,7 @@ namespace ReservaCine
             {
                 // Si no existe, carga el placeholder por defecto
                 string rutaDefault = Path.GetFullPath(
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios\default.png")
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios\default.jpg")
                 );
 
                 if (File.Exists(rutaDefault))

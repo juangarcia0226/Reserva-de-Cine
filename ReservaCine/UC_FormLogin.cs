@@ -23,6 +23,7 @@ namespace ReservaCine
             Lbl_correo.Text = "Correo:";
             Lbl_correoConfi.Text = "Confirmar correo:";
             Lbl_contrasena.Text = "Contraseña:";
+            Lbl_confirmar.Text = "Confirmar contraseña";
             Lbl_imagen.Text = "Imagen para la foto de perfil:";
 
             this.BorderStyle = BorderStyle.FixedSingle;
@@ -44,12 +45,11 @@ namespace ReservaCine
                     return;
                 }
 
-                // Ruta de la carpeta de destino dentro del proyecto
-                string carpetaDestino = Path.GetFullPath(
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios")
-                );
+                // Ruta base del proyecto (no del bin)
+                string rutaProyecto = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+                string carpetaDestino = Path.Combine(rutaProyecto, "ImagenesUsuarios");
 
-                // Crear la carpeta si no existe
+                // Crear carpeta si no existe
                 if (!Directory.Exists(carpetaDestino))
                     Directory.CreateDirectory(carpetaDestino);
 
@@ -65,35 +65,39 @@ namespace ReservaCine
 
                 try
                 {
-                    // Limpiar correo para usarlo como nombre de archivo (sin caracteres inválidos)
+                    // Limpiar el correo para usarlo como nombre de archivo
                     string correoLimpio = Txt_correo.Text.Trim()
                         .Replace("@", "_at_")
                         .Replace(".", "_dot_");
 
-                    // Reemplazar cualquier carácter inválido del sistema de archivos
-                    char[] invalidChars = Path.GetInvalidFileNameChars();
-                    foreach (char c in invalidChars)
+                    // Reemplazar caracteres inválidos del sistema de archivos
+                    foreach (char c in Path.GetInvalidFileNameChars())
                         correoLimpio = correoLimpio.Replace(c, '_');
 
-                    // Conservar extensión original
+                    // Mantener extensión original
                     string extension = Path.GetExtension(ofd.FileName).ToLower();
 
-                    // Crear nombre final: correo_limpio.extensión
+                    // Nombre final del archivo
                     string nombreArchivo = $"{correoLimpio}{extension}";
 
-                    // Construir ruta completa de destino
-                    string destino = Path.Combine(carpetaDestino, nombreArchivo);
+                    // Ruta completa de destino
+                    string rutaDestino = Path.Combine(carpetaDestino, nombreArchivo);
 
-                    // Copiar imagen a la carpeta del proyecto (sobrescribe si ya existe)
-                    File.Copy(ofd.FileName, destino, true);
+                    // Copiar la imagen al proyecto (sobrescribe si ya existe)
+                    File.Copy(ofd.FileName, rutaDestino, true);
 
-                    // Mostrar imagen sin bloquear el archivo
-                    using (var stream = new FileStream(destino, FileMode.Open, FileAccess.Read))
+                    // Mostrar la imagen sin bloquear el archivo
+                    using (var stream = new FileStream(rutaDestino, FileMode.Open, FileAccess.Read))
                     {
-                        Pbx_imagen.Image = Image.FromStream(stream);
+                        using (var ms = new MemoryStream())
+                        {
+                            stream.CopyTo(ms);
+                            ms.Position = 0;
+                            Pbx_imagen.Image = Image.FromStream(ms);
+                        }
                     }
 
-                    // Guardar la ruta relativa (con carpeta incluida)
+                    // Guardar la ruta relativa para luego cargarla correctamente
                     this.ImagenSeleccionada = Path.Combine("ImagenesUsuarios", nombreArchivo);
                 }
                 catch (Exception ex)
@@ -131,7 +135,12 @@ namespace ReservaCine
                 Lbl_error.Text = "Ingrese una contraseña.";
                 return;
             }
-
+            if (string.IsNullOrWhiteSpace(Txt_comfirmar.Text))
+            {
+                Lbl_error.ForeColor = Color.Red;
+                Lbl_error.Text = "Confirme la contraseña ingresada.";
+                return;
+            }
             if (!Txt_correo.Text.Trim().Contains("@") || !Txt_correo.Text.Trim().Contains("."))
             {
                 Lbl_error.ForeColor = Color.Red;
@@ -144,6 +153,11 @@ namespace ReservaCine
                 Lbl_error.ForeColor = Color.Red;
                 Lbl_error.Text = "Los correos no coinciden";
                 return;
+            }
+            if (Txt_contrasena.Text != Txt_comfirmar.Text)
+            {
+                Lbl_error.ForeColor = Color.Red;
+                Lbl_error.Text = "La contraseña NO coincide.";
             }
 
             //Validar que la contraseña tenga un número, simbolo y que sea mínimo de 8 caracteres
@@ -167,7 +181,7 @@ namespace ReservaCine
             }
 
             //Sino se ingreso imagen por defecto es 'default.png'
-            string imagen = string.IsNullOrEmpty(ImagenSeleccionada) ? "default.png" : ImagenSeleccionada;
+            string imagen = string.IsNullOrEmpty(ImagenSeleccionada) ? Path.Combine("ImagenesUsuarios", "default.jpg") : ImagenSeleccionada;
 
             //Crear nuevo usuario
             Usuario newUsuario = new Usuario(
@@ -215,6 +229,30 @@ namespace ReservaCine
 
             
             VolverLogin?.Invoke();
+        }
+
+        private void Btn_ver1_Click(object sender, EventArgs e)
+        {
+            if (Txt_contrasena.UseSystemPasswordChar == true)
+            {
+                Txt_contrasena.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                Txt_contrasena.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void Btn_ver2_Click(object sender, EventArgs e)
+        {
+            if (Txt_comfirmar.UseSystemPasswordChar == true)
+            {
+                Txt_comfirmar.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                Txt_comfirmar.UseSystemPasswordChar= true;
+            }
         }
     }
 }

@@ -94,6 +94,9 @@ namespace ReservaCine
 
                 Txt_contrasena.Clear();
                 Txt_confirmar.Clear();
+                this.Hide();
+                Form1 formLogin = new Form1();
+                formLogin.Show();
             }
             catch (Exception ex)
             {

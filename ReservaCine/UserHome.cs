@@ -111,52 +111,58 @@ namespace ReservaCine
         }
         private void CargarFotoUsuario(Usuario usuario)
         {
-            // Si no hay imagen, usar una ruta relativa por defecto
-            string rutaRelativa = string.IsNullOrEmpty(usuario.Imagen)
-                ? "ImagenesUsuarios\\default.png"
-                : usuario.Imagen;
-
-            // Construir la ruta física completa a partir del directorio base del proyecto
-            string rutaFisica = Path.GetFullPath(
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\", rutaRelativa)
-            );
-
-            // Liberar imagen previa para evitar bloqueo
-            if (Pbx_usuario.Image != null)
+            try
             {
-                Pbx_usuario.Image.Dispose();
-                Pbx_usuario.Image = null;
-            }
+                // Ruta base del proyecto (nivel superior)
+                string rutaProyecto = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
 
-            // Cargar imagen si existe
-            if (File.Exists(rutaFisica))
-            {
-                using (var stream = new FileStream(rutaFisica, FileMode.Open, FileAccess.Read))
+                // Si no tiene imagen registrada, usar la por defecto
+                string rutaRelativa = string.IsNullOrEmpty(usuario.Imagen)
+                    ? Path.Combine("ImagenesUsuarios", "default.jpg")
+                    : usuario.Imagen;
+
+                // Construir la ruta física final
+                string rutaFisica = Path.Combine(rutaProyecto, rutaRelativa);
+
+                Console.WriteLine("Ruta usada: " + rutaFisica);
+
+                // Liberar imagen previa
+                if (Pbx_usuario.Image != null)
                 {
-                    Pbx_usuario.Image = Image.FromStream(stream);
+                    Pbx_usuario.Image.Dispose();
+                    Pbx_usuario.Image = null;
                 }
-            }
-            else
-            {
-                // Si no existe, carga el placeholder por defecto
-                string rutaDefault = Path.GetFullPath(
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios\default.png")
-                );
 
-                if (File.Exists(rutaDefault))
+                // Verificar existencia y cargar imagen sin bloquear archivo
+                if (File.Exists(rutaFisica))
                 {
-                    using (var stream = new FileStream(rutaDefault, FileMode.Open, FileAccess.Read))
+                    using (var stream = new FileStream(rutaFisica, FileMode.Open, FileAccess.Read))
                     {
                         Pbx_usuario.Image = Image.FromStream(stream);
                     }
                 }
                 else
                 {
-                    Pbx_usuario.Image = null;
+                    // Si no existe, intenta cargar la default
+                    string rutaDefault = Path.Combine(rutaProyecto, "ImagenesUsuarios", "default.jpg");
+                    if (File.Exists(rutaDefault))
+                    {
+                        using (var stream = new FileStream(rutaDefault, FileMode.Open, FileAccess.Read))
+                        {
+                            Pbx_usuario.Image = Image.FromStream(stream);
+                        }
+                    }
+                    else
+                    {
+                        Pbx_usuario.Image = null;
+                    }
                 }
             }
-
-            Pbx_usuario.SizeMode = PictureBoxSizeMode.Zoom;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar imagen: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Pbx_usuario.Image = null;
+            }
         }
 
     }

@@ -32,6 +32,7 @@
             this.Btn_iniciar_login = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_register_login = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_login = new Guna.UI2.WinForms.Guna2Panel();
+            this.Btn_ver = new Guna.UI2.WinForms.Guna2Button();
             this.Lbl_olvidar = new System.Windows.Forms.LinkLabel();
             this.Lbl_contrasena = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Lbl_correo = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -39,7 +40,6 @@
             this.Img_login = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Txt_user_login = new Guna.UI2.WinForms.Guna2TextBox();
             this.Pnl_form = new Guna.UI2.WinForms.Guna2Panel();
-            this.Btn_ver = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_login.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,6 +103,7 @@
             this.Pnl_login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Pnl_login.BorderRadius = 10;
             this.Pnl_login.Controls.Add(this.Btn_ver);
+            this.Pnl_login.Controls.Add(this.Pnl_form);
             this.Pnl_login.Controls.Add(this.Lbl_olvidar);
             this.Pnl_login.Controls.Add(this.Lbl_contrasena);
             this.Pnl_login.Controls.Add(this.Lbl_correo);
@@ -112,11 +113,27 @@
             this.Pnl_login.Controls.Add(this.Btn_register_login);
             this.Pnl_login.Controls.Add(this.Txt_user_login);
             this.Pnl_login.Controls.Add(this.Btn_iniciar_login);
-            this.Pnl_login.Controls.Add(this.Pnl_form);
             this.Pnl_login.Location = new System.Drawing.Point(12, 12);
             this.Pnl_login.Name = "Pnl_login";
-            this.Pnl_login.Size = new System.Drawing.Size(941, 500);
+            this.Pnl_login.Size = new System.Drawing.Size(941, 556);
             this.Pnl_login.TabIndex = 5;
+            // 
+            // Btn_ver
+            // 
+            this.Btn_ver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_ver.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_ver.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_ver.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_ver.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_ver.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_ver.ForeColor = System.Drawing.Color.White;
+            this.Btn_ver.Image = global::ReservaCine.Properties.Resources.ojo;
+            this.Btn_ver.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.Btn_ver.Location = new System.Drawing.Point(590, 287);
+            this.Btn_ver.Name = "Btn_ver";
+            this.Btn_ver.Size = new System.Drawing.Size(55, 20);
+            this.Btn_ver.TabIndex = 17;
+            this.Btn_ver.Click += new System.EventHandler(this.Btn_ver_Click);
             // 
             // Lbl_olvidar
             // 
@@ -200,35 +217,18 @@
             // 
             this.Pnl_form.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Pnl_form.BorderRadius = 10;
-            this.Pnl_form.Location = new System.Drawing.Point(782, 103);
+            this.Pnl_form.Location = new System.Drawing.Point(847, 15);
             this.Pnl_form.Name = "Pnl_form";
-            this.Pnl_form.Size = new System.Drawing.Size(752, 369);
+            this.Pnl_form.Size = new System.Drawing.Size(752, 517);
             this.Pnl_form.TabIndex = 6;
             this.Pnl_form.Visible = false;
-            // 
-            // Btn_ver
-            // 
-            this.Btn_ver.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Btn_ver.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.Btn_ver.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.Btn_ver.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.Btn_ver.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.Btn_ver.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Btn_ver.ForeColor = System.Drawing.Color.White;
-            this.Btn_ver.Image = global::ReservaCine.Properties.Resources.ojo;
-            this.Btn_ver.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.Btn_ver.Location = new System.Drawing.Point(590, 287);
-            this.Btn_ver.Name = "Btn_ver";
-            this.Btn_ver.Size = new System.Drawing.Size(55, 20);
-            this.Btn_ver.TabIndex = 17;
-            this.Btn_ver.Click += new System.EventHandler(this.Btn_ver_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(965, 524);
+            this.ClientSize = new System.Drawing.Size(965, 580);
             this.Controls.Add(this.Pnl_login);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

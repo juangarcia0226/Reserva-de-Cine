@@ -282,11 +282,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ImagenesPeliculas\no_image.jpg" />
-    <Content Include="ImagenesUsuarios\default.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\5127040.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ImagenesUsuarios\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

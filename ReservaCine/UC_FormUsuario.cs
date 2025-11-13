@@ -52,7 +52,7 @@ namespace ReservaCine
 
             // Guardar la ruta de imagen existente o usar una por defecto
             ImagenSeleccionada = string.IsNullOrEmpty(usuario.Imagen)
-                ? "ImagenesUsuarios\\default.png"
+                ? "ImagenesUsuarios\\default.jpg"
                 : usuario.Imagen;
 
             // Construir la ruta física real desde el proyecto
@@ -118,7 +118,7 @@ namespace ReservaCine
             }
 
             //Sino se ingreso imagen por defecto es 'default.png'
-            string imagen = string.IsNullOrEmpty(ImagenSeleccionada) ? "default.png" : ImagenSeleccionada;
+            string imagen = string.IsNullOrEmpty(ImagenSeleccionada) ? "default.jpg" : ImagenSeleccionada;
 
             if (accion == "agregar")
             {

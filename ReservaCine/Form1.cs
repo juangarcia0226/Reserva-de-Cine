@@ -29,7 +29,7 @@ namespace ReservaCine
             Lbl_contrasena.Text = "Contraseña: ";
             Lbl_error_login.ForeColor = Color.DarkGray;
 
-            /*Usuario admin = new Usuario(0, "Admin", "admin@a.com", "admin123", "default.png", 1);
+            /*Usuario admin = new Usuario(0, "Admin", "admin@a.com", "admin123", "default.jpg", 1);
             CrudUsuario dbUsuario = new CrudUsuario();
             dbUsuario.AddUsuario(admin);*/
         }
@@ -102,7 +102,7 @@ namespace ReservaCine
             };
 
             Pnl_form.Controls.Add(formUsuario);
-            Pnl_form.Location = new Point(82, 64);
+            Pnl_form.Location = new Point(90, 23);
             Pnl_form.Visible = true;
             Pnl_form.BringToFront();
         }
