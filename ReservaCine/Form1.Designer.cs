@@ -28,31 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Img_login = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Txt_pass_login = new Guna.UI2.WinForms.Guna2TextBox();
             this.Btn_iniciar_login = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_register_login = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_login = new Guna.UI2.WinForms.Guna2Panel();
+            this.Lbl_olvidar = new System.Windows.Forms.LinkLabel();
             this.Lbl_contrasena = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Lbl_correo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Lbl_error_login = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.Img_login = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Txt_user_login = new Guna.UI2.WinForms.Guna2TextBox();
             this.Pnl_form = new Guna.UI2.WinForms.Guna2Panel();
+            this.Btn_ver = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_login.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Img_login
-            // 
-            this.Img_login.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.Img_login.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.Img_login.Image = global::ReservaCine.Properties.Resources._5127040;
-            this.Img_login.ImageOffset = new System.Drawing.Point(0, 0);
-            this.Img_login.ImageRotate = 0F;
-            this.Img_login.Location = new System.Drawing.Point(378, 64);
-            this.Img_login.Name = "Img_login";
-            this.Img_login.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.Img_login.Size = new System.Drawing.Size(149, 84);
-            this.Img_login.TabIndex = 0;
             // 
             // Txt_pass_login
             // 
@@ -74,6 +63,7 @@
             this.Txt_pass_login.SelectedText = "";
             this.Txt_pass_login.Size = new System.Drawing.Size(258, 55);
             this.Txt_pass_login.TabIndex = 2;
+            this.Txt_pass_login.UseSystemPasswordChar = true;
             // 
             // Btn_iniciar_login
             // 
@@ -112,6 +102,8 @@
             // 
             this.Pnl_login.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Pnl_login.BorderRadius = 10;
+            this.Pnl_login.Controls.Add(this.Btn_ver);
+            this.Pnl_login.Controls.Add(this.Lbl_olvidar);
             this.Pnl_login.Controls.Add(this.Lbl_contrasena);
             this.Pnl_login.Controls.Add(this.Lbl_correo);
             this.Pnl_login.Controls.Add(this.Txt_pass_login);
@@ -125,6 +117,19 @@
             this.Pnl_login.Name = "Pnl_login";
             this.Pnl_login.Size = new System.Drawing.Size(941, 500);
             this.Pnl_login.TabIndex = 5;
+            // 
+            // Lbl_olvidar
+            // 
+            this.Lbl_olvidar.AutoSize = true;
+            this.Lbl_olvidar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_olvidar.LinkColor = System.Drawing.Color.Black;
+            this.Lbl_olvidar.Location = new System.Drawing.Point(374, 452);
+            this.Lbl_olvidar.Name = "Lbl_olvidar";
+            this.Lbl_olvidar.Size = new System.Drawing.Size(161, 20);
+            this.Lbl_olvidar.TabIndex = 9;
+            this.Lbl_olvidar.TabStop = true;
+            this.Lbl_olvidar.Text = "¿Olvidó su contraseña?";
+            this.Lbl_olvidar.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lbl_olvidar_LinkClicked);
             // 
             // Lbl_contrasena
             // 
@@ -155,6 +160,19 @@
             this.Lbl_error_login.Size = new System.Drawing.Size(7, 25);
             this.Lbl_error_login.TabIndex = 5;
             this.Lbl_error_login.Text = ".";
+            // 
+            // Img_login
+            // 
+            this.Img_login.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.Img_login.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.Img_login.Image = global::ReservaCine.Properties.Resources._5127040;
+            this.Img_login.ImageOffset = new System.Drawing.Point(0, 0);
+            this.Img_login.ImageRotate = 0F;
+            this.Img_login.Location = new System.Drawing.Point(378, 64);
+            this.Img_login.Name = "Img_login";
+            this.Img_login.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.Img_login.Size = new System.Drawing.Size(149, 84);
+            this.Img_login.TabIndex = 0;
             // 
             // Txt_user_login
             // 
@@ -188,6 +206,23 @@
             this.Pnl_form.TabIndex = 6;
             this.Pnl_form.Visible = false;
             // 
+            // Btn_ver
+            // 
+            this.Btn_ver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_ver.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_ver.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_ver.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_ver.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_ver.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_ver.ForeColor = System.Drawing.Color.White;
+            this.Btn_ver.Image = global::ReservaCine.Properties.Resources.ojo;
+            this.Btn_ver.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.Btn_ver.Location = new System.Drawing.Point(590, 287);
+            this.Btn_ver.Name = "Btn_ver";
+            this.Btn_ver.Size = new System.Drawing.Size(55, 20);
+            this.Btn_ver.TabIndex = 17;
+            this.Btn_ver.Click += new System.EventHandler(this.Btn_ver_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -216,6 +251,8 @@
         private Guna.UI2.WinForms.Guna2TextBox Txt_user_login;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_contrasena;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_correo;
+        private System.Windows.Forms.LinkLabel Lbl_olvidar;
+        private Guna.UI2.WinForms.Guna2Button Btn_ver;
     }
 }
 

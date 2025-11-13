@@ -16,6 +16,7 @@ namespace ReservaCine
         private CrudUsuario DbUsuario;
         //Lista para guardar los usuarios
         List<Usuario> Usuarios;
+        Usuario user;
         public Form1()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace ReservaCine
 
             this.Hide();
             UserHome userHome = new UserHome();
-            userHome.Show(); */
+            userHome.Show();*/
 
             if (string.IsNullOrWhiteSpace(Txt_user_login.Text))
             {
@@ -104,6 +105,25 @@ namespace ReservaCine
             Pnl_form.Location = new Point(82, 64);
             Pnl_form.Visible = true;
             Pnl_form.BringToFront();
+        }
+
+        private void Lbl_olvidar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            UserContrasena userContrasena = new UserContrasena();
+            userContrasena.Show();
+        }
+
+        private void Btn_ver_Click(object sender, EventArgs e)
+        {
+            if (Txt_pass_login.UseSystemPasswordChar == true)
+            {
+                Txt_pass_login.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                Txt_pass_login.UseSystemPasswordChar = true;
+            }
         }
     }
 }
