@@ -110,7 +110,10 @@ namespace ReservaCine
                     Dtp_fecha.Value,
                     Txt_hora.Text.Trim()
                 );
-                dbFuncion.AddFuncion( newFuncion );
+                int idFuncionCreada = dbFuncion.AddFuncion(newFuncion);
+
+                GenerarAsientos(idFuncionCreada, (int)Cbx_sala.SelectedValue);
+
                 Lbl_error.ForeColor = Color.FromArgb(40, 167, 69);
                 Lbl_error.Text = $"Nueva función '{newFuncion.Descripcion}' agregada correctamente.";
             }
@@ -129,6 +132,37 @@ namespace ReservaCine
                 Lbl_error.Text = $"La función '{updateFuncion.Descripcion}' actualizada correctamente";
             }
             VolverListado?.Invoke();
+        }
+
+        private void GenerarAsientos(int idFuncion, int idSala)
+        {
+            CrudAsiento dbAsiento = new CrudAsiento();
+
+            //Obtener sala (filas y columnas)
+            List<Sala> salas = dbSala.GetSalas();
+            Sala sala = salas.FirstOrDefault(s=> s.IdSala == idSala);
+
+            int filas = sala.Filas;        
+            int columnas = sala.Columnas;  
+
+            for (int f = 0; f < filas; f++)
+            {
+                char letraFila = (char)('A' + f);
+
+                for (int c = 1; c <= columnas; c++)
+                {
+                    string codigo = $"{letraFila}{c}";
+
+                    Asiento asiento = new Asiento(
+                        0,
+                        idFuncion,
+                        codigo,
+                        true
+                    );
+
+                    dbAsiento.AddAsiento(asiento);
+                }
+            }
         }
 
         private void Btn_cancelar_Click(object sender, EventArgs e)

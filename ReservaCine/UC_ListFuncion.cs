@@ -75,7 +75,7 @@ namespace ReservaCine
                 Font = new Font("Segoe UI", 9),
                 ForeColor = Color.DimGray,
                 Location = new Point(22, 50),
-                Size = new Size(120, 20)
+                Size = new Size(150, 20),
             };
             panel.Controls.Add(Lbl_pelicula);
 
@@ -107,8 +107,8 @@ namespace ReservaCine
                 AutoSize = false,
                 Font = new Font("Segoe UI", 9),
                 ForeColor = Color.DimGray,
-                Location = new Point(164, 50),
-                Size = new Size(120, 20)
+                Location = new Point(180, 50),
+                Size = new Size(100, 20),
             };
             panel.Controls.Add(Lbl_hora);
 

@@ -152,7 +152,9 @@
             // Lbl_descripcion
             // 
             this.Lbl_descripcion.AutoSize = true;
+            this.Lbl_descripcion.BackColor = System.Drawing.Color.Transparent;
             this.Lbl_descripcion.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_descripcion.ForeColor = System.Drawing.Color.Black;
             this.Lbl_descripcion.Location = new System.Drawing.Point(24, 19);
             this.Lbl_descripcion.Name = "Lbl_descripcion";
             this.Lbl_descripcion.Size = new System.Drawing.Size(102, 23);

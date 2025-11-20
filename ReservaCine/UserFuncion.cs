@@ -14,82 +14,102 @@ namespace ReservaCine
     public partial class UserFuncion: Form
     {
         private int idPelicula;
-        private int idFuncion;
+        private Usuario Usuario;
         private CrudFuncion dbFuncion;
         List<Funcion> funciones;
         public UserFuncion(int idPeli, Usuario usuario)
         {
             InitializeComponent();
+
             dbFuncion = new CrudFuncion();
+
             Lbl_funciones.Text = "Funciones";
-            LoadFunciones();
+            Lbl_usuario.Text = usuario.Nombre;
+
             this.idPelicula = idPeli;
+            this.Usuario = usuario;
+
+            funciones = dbFuncion.GetFuncion().Where(f => f.IdPelicula == idPelicula).ToList();
+            MostrarFunciones(funciones, Flp_funciones);
+
             MostrarInfoPelicula();
+
             CargarFotoUsuario(usuario);
+
             Lbl_usuario.Text = usuario.Nombre;
         }
-        private void LoadFunciones()
-        {
-            funciones = dbFuncion.GetFuncion();
 
-            var funcionesFiltradas = funciones.Where(f => f.IdPelicula == idFuncion).OrderBy(f => f.IdFuncion);
-
-            Flp_funciones.Controls.Clear();
-
-            foreach (var funcion in funciones)
-            {
-                var card = new UC_UserFuncion();
-                card.IdFuncion = idFuncion;
-                card.Configurar(funcion.Fecha, funcion.Horario, funcion.IdFuncion);
-
-                Flp_funciones.Controls.Add(card);
-            }
-        }
+        //Método para filtrar y mostrar las funciones por día
         private void MostrarFunciones(List<Funcion> funcionesPeliculas, FlowLayoutPanel flp)
         {
             flp.Controls.Clear();
 
             DateTime hoy = DateTime.Today;
-            DateTime limite = hoy.AddDays(2); // Hoy + 2 días
+            DateTime limite = hoy.AddDays(2);
 
-            // Filtrar funciones entre hoy y límite
             var funcionesFiltradas = funcionesPeliculas
                 .Where(f => f.Fecha >= hoy && f.Fecha <= limite)
                 .OrderBy(f => f.Fecha)
-                .ThenBy(f => f.Horario) // ordena por hora
+                .ThenBy(f => f.Horario)
                 .ToList();
 
-            // Agrupar por día
             var funcionesPorDia = funcionesFiltradas
                 .GroupBy(f => f.Fecha)
                 .OrderBy(g => g.Key);
 
             foreach (var grupo in funcionesPorDia)
             {
-                // Label con el día
+                // CONTENEDOR DEL DÍA
+                Panel contenedorDia = new Panel
+                {
+                    Width = flp.Width - 30,
+                    AutoSize = true,
+                    AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                    Margin = new Padding(10, 10, 10, 10),
+                    BackColor = Color.Transparent,
+                };
+
+                // LABEL DEL DÍA
                 Label lblDia = new Label
                 {
                     Text = grupo.Key.ToString("dddd, dd MMMM"),
-                    Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                    Font = new Font("Segoe UI", 11, FontStyle.Bold),
                     AutoSize = true,
-                    Margin = new Padding(10, 10, 0, 5)
+                    Location = new Point(5, 0)
                 };
-                flp.Controls.Add(lblDia);
+                contenedorDia.Controls.Add(lblDia);
 
-                // Cards de cada función
+                // FLOWLAYOUT DE LAS FUNCIONES DE ESE DÍA
+                FlowLayoutPanel flpDia = new FlowLayoutPanel
+                {
+                    Location = new Point(5, 30),
+                    Width = contenedorDia.Width - 10,
+                    AutoSize = true,
+                    AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                    WrapContents = true,
+                    FlowDirection = FlowDirection.LeftToRight,
+                };
+                contenedorDia.Controls.Add(flpDia);
+
+                // AGREGAR LAS CARDS
                 foreach (var funcion in grupo)
                 {
-                    UC_UserFuncion card = new UC_UserFuncion();
-                    card.Configurar(funcion.Fecha, funcion.Horario, funcion.IdFuncion);
+                    var card = new UC_UserFuncion();
+                    card.Configurar(funcion);
                     card.SeleccionarClicked += (s, e) => SeleccionarFuncion(funcion);
-                    flp.Controls.Add(card);
+
+                    flpDia.Controls.Add(card);
                 }
+
+                flp.Controls.Add(contenedorDia);
             }
         }
 
         private void SeleccionarFuncion(Funcion funcion)
         {
-
+            this.Hide();
+            UserAsiento userAsiento = new UserAsiento(idPelicula, funcion, Usuario);
+            userAsiento.Show();
         }
 
         private void MostrarInfoPelicula()
@@ -160,6 +180,13 @@ namespace ReservaCine
             this.Hide();
             Form1 loginForm = new Form1();
             loginForm.Show();
+        }
+
+        private void Btn_peliculas_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserHome userHome = new UserHome(Usuario);
+            userHome.Show();
         }
     }
 }

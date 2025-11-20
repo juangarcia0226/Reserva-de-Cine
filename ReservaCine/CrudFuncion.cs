@@ -36,18 +36,20 @@ namespace ReservaCine
         }
 
         //Método para guardar una nueva función en la db
-        public void AddFuncion(Funcion funcion)
+        public int AddFuncion(Funcion funcion)
         {
             using (SqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO funcion (descripcion, id_pelicula, id_sala, fecha, hora) VALUES (@descripcion, @id_pelicula, @id_sala, @fecha, @horario)", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO funcion (descripcion, id_pelicula, id_sala, fecha, hora) " + "OUTPUT INSERTED.id_funcion " + "VALUES (@descripcion, @id_pelicula, @id_sala, @fecha, @hora)", conn);
+
                 cmd.Parameters.AddWithValue("@descripcion", funcion.Descripcion);
                 cmd.Parameters.AddWithValue("@id_pelicula", funcion.IdPelicula);
                 cmd.Parameters.AddWithValue("@id_sala", funcion.IdSala);
                 cmd.Parameters.AddWithValue("@fecha", funcion.Fecha);
-                cmd.Parameters.AddWithValue("@horario", funcion.Horario);
-                cmd.ExecuteNonQuery();
+                cmd.Parameters.AddWithValue("@hora", funcion.Horario);
+
+                return (int)cmd.ExecuteScalar();
             }
         }
 

@@ -66,7 +66,7 @@ namespace ReservaCine
                 Font = new Font("Segoe UI", 9),
                 ForeColor = Color.DimGray,
                 Location = new Point(22, 50),
-                Size = new Size(200, 20)
+                Size = new Size(260, 20)
             };
             panel.Controls.Add(Lbl_correo);
 

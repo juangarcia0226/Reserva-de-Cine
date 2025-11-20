@@ -165,5 +165,11 @@ namespace ReservaCine
             }
         }
 
+        private void Btn_reservas_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserReserva userReserva = new UserReserva(usuario);
+            userReserva.Show();
+        }
     }
 }

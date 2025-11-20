@@ -49,3 +49,22 @@ CREATE TABLE funcion (
     hora NVARCHAR(10) NOT NULL
 );
 
+CREATE TABLE asiento (
+    id_asiento INT PRIMARY KEY IDENTITY(1,1),
+    id_funcion INT NOT NULL FOREIGN KEY REFERENCES funcion(id_funcion),
+    codigo NVARCHAR(10) NOT NULL,
+    disponible BIT NOT NULL DEFAULT 1
+);
+
+CREATE TABLE reserva (
+    id_reserva INT PRIMARY KEY IDENTITY(1,1),
+    id_usuario INT NOT NULL FOREIGN KEY REFERENCES usuario(id_usuario),
+    id_funcion INT NOT NULL FOREIGN KEY REFERENCES funcion(id_funcion),
+    fecha_reserva DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+CREATE TABLE reserva_asiento (
+    id_reserva INT NOT NULL FOREIGN KEY REFERENCES reserva(id_reserva),
+    id_asiento INT NOT NULL FOREIGN KEY REFERENCES asiento(id_asiento),
+    PRIMARY KEY (id_reserva, id_asiento)
+);
