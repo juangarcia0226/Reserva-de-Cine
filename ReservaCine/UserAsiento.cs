@@ -302,6 +302,9 @@ namespace ReservaCine
                     asientosSeleccionados.Clear();
                     ActualizarListaAsientos();
                     MostrarAsientos();
+                    this.Hide();
+                    UserReserva userReserva = new UserReserva(usuario);
+                    userReserva.Show();
                 }
                 catch (Exception ex)
                 {

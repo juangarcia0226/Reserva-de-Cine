@@ -38,6 +38,7 @@
             this.Pnl_principal = new Guna.UI2.WinForms.Guna2Panel();
             this.Lbl_reservas = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Flp_reservas = new System.Windows.Forms.FlowLayoutPanel();
+            this.Txt_buscar = new Guna.UI2.WinForms.Guna2TextBox();
             this.Pnl_menu_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pbx_usuario)).BeginInit();
             this.Pnl_principal.SuspendLayout();
@@ -94,6 +95,7 @@
             this.Btn_salir.Size = new System.Drawing.Size(180, 45);
             this.Btn_salir.TabIndex = 3;
             this.Btn_salir.Text = "Cerrar sesión";
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
             // Btn_salas
             // 
@@ -126,6 +128,7 @@
             this.Btn_peliculas.Size = new System.Drawing.Size(180, 45);
             this.Btn_peliculas.TabIndex = 1;
             this.Btn_peliculas.Text = "Películas";
+            this.Btn_peliculas.Click += new System.EventHandler(this.Btn_peliculas_Click);
             // 
             // Btn_menu
             // 
@@ -144,6 +147,7 @@
             // 
             // Pnl_principal
             // 
+            this.Pnl_principal.Controls.Add(this.Txt_buscar);
             this.Pnl_principal.Controls.Add(this.Lbl_reservas);
             this.Pnl_principal.Controls.Add(this.Flp_reservas);
             this.Pnl_principal.Location = new System.Drawing.Point(178, 4);
@@ -166,10 +170,33 @@
             this.Flp_reservas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Flp_reservas.AutoScroll = true;
-            this.Flp_reservas.Location = new System.Drawing.Point(9, 76);
+            this.Flp_reservas.Location = new System.Drawing.Point(9, 151);
             this.Flp_reservas.Name = "Flp_reservas";
-            this.Flp_reservas.Size = new System.Drawing.Size(951, 560);
+            this.Flp_reservas.Size = new System.Drawing.Size(951, 485);
             this.Flp_reservas.TabIndex = 18;
+            // 
+            // Txt_buscar
+            // 
+            this.Txt_buscar.BorderRadius = 22;
+            this.Txt_buscar.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Txt_buscar.DefaultText = "";
+            this.Txt_buscar.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Txt_buscar.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Txt_buscar.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Txt_buscar.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Txt_buscar.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Txt_buscar.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.Txt_buscar.ForeColor = System.Drawing.Color.DimGray;
+            this.Txt_buscar.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Txt_buscar.Location = new System.Drawing.Point(207, 68);
+            this.Txt_buscar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Txt_buscar.Name = "Txt_buscar";
+            this.Txt_buscar.PlaceholderForeColor = System.Drawing.Color.DimGray;
+            this.Txt_buscar.PlaceholderText = "Ingrese el título de una película";
+            this.Txt_buscar.SelectedText = "";
+            this.Txt_buscar.Size = new System.Drawing.Size(506, 55);
+            this.Txt_buscar.TabIndex = 20;
+            this.Txt_buscar.TextChanged += new System.EventHandler(this.Txt_buscar_TextChanged);
             // 
             // UserReserva
             // 
@@ -180,7 +207,9 @@
             this.Controls.Add(this.Pnl_principal);
             this.Controls.Add(this.Pnl_menu_left);
             this.Name = "UserReserva";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserReserva";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserReserva_FormClosing);
             this.Pnl_menu_left.ResumeLayout(false);
             this.Pnl_menu_left.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pbx_usuario)).EndInit();
@@ -202,5 +231,6 @@
         private Guna.UI2.WinForms.Guna2Panel Pnl_principal;
         private Guna.UI2.WinForms.Guna2HtmlLabel Lbl_reservas;
         private System.Windows.Forms.FlowLayoutPanel Flp_reservas;
+        private Guna.UI2.WinForms.Guna2TextBox Txt_buscar;
     }
 }

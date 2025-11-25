@@ -36,13 +36,14 @@
             this.Btn_guardar = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_form = new Guna.UI2.WinForms.Guna2Panel();
             this.Pnl_menu_left = new Guna.UI2.WinForms.Guna2Panel();
+            this.Btn_salir = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_usuarios = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_funciones = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_salas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_peliculas = new Guna.UI2.WinForms.Guna2Button();
             this.Btn_menu = new Guna.UI2.WinForms.Guna2Button();
             this.Tmr_menu = new System.Windows.Forms.Timer(this.components);
-            this.Btn_salir = new Guna.UI2.WinForms.Guna2Button();
+            this.Btn_reservas = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_AdminHome.SuspendLayout();
             this.Pnl_menu_left.SuspendLayout();
             this.SuspendLayout();
@@ -133,6 +134,7 @@
             // Pnl_menu_left
             // 
             this.Pnl_menu_left.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Pnl_menu_left.Controls.Add(this.Btn_reservas);
             this.Pnl_menu_left.Controls.Add(this.Btn_salir);
             this.Pnl_menu_left.Controls.Add(this.Btn_usuarios);
             this.Pnl_menu_left.Controls.Add(this.Btn_funciones);
@@ -142,8 +144,25 @@
             this.Pnl_menu_left.Location = new System.Drawing.Point(0, 1);
             this.Pnl_menu_left.Margin = new System.Windows.Forms.Padding(4);
             this.Pnl_menu_left.Name = "Pnl_menu_left";
-            this.Pnl_menu_left.Size = new System.Drawing.Size(170, 668);
+            this.Pnl_menu_left.Size = new System.Drawing.Size(170, 666);
             this.Pnl_menu_left.TabIndex = 1;
+            // 
+            // Btn_salir
+            // 
+            this.Btn_salir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_salir.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_salir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_salir.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_salir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_salir.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.Btn_salir.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_salir.ForeColor = System.Drawing.Color.White;
+            this.Btn_salir.Location = new System.Drawing.Point(-10, 601);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(180, 45);
+            this.Btn_salir.TabIndex = 4;
+            this.Btn_salir.Text = "Cerrar sesión";
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
             // 
             // Btn_usuarios
             // 
@@ -155,7 +174,7 @@
             this.Btn_usuarios.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Btn_usuarios.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_usuarios.ForeColor = System.Drawing.Color.White;
-            this.Btn_usuarios.Location = new System.Drawing.Point(0, 402);
+            this.Btn_usuarios.Location = new System.Drawing.Point(0, 374);
             this.Btn_usuarios.Name = "Btn_usuarios";
             this.Btn_usuarios.Size = new System.Drawing.Size(180, 45);
             this.Btn_usuarios.TabIndex = 3;
@@ -172,7 +191,7 @@
             this.Btn_funciones.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Btn_funciones.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_funciones.ForeColor = System.Drawing.Color.White;
-            this.Btn_funciones.Location = new System.Drawing.Point(0, 340);
+            this.Btn_funciones.Location = new System.Drawing.Point(0, 312);
             this.Btn_funciones.Name = "Btn_funciones";
             this.Btn_funciones.Size = new System.Drawing.Size(180, 45);
             this.Btn_funciones.TabIndex = 3;
@@ -189,7 +208,7 @@
             this.Btn_salas.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Btn_salas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_salas.ForeColor = System.Drawing.Color.White;
-            this.Btn_salas.Location = new System.Drawing.Point(0, 278);
+            this.Btn_salas.Location = new System.Drawing.Point(0, 250);
             this.Btn_salas.Name = "Btn_salas";
             this.Btn_salas.Size = new System.Drawing.Size(180, 45);
             this.Btn_salas.TabIndex = 2;
@@ -206,7 +225,7 @@
             this.Btn_peliculas.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Btn_peliculas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_peliculas.ForeColor = System.Drawing.Color.White;
-            this.Btn_peliculas.Location = new System.Drawing.Point(0, 218);
+            this.Btn_peliculas.Location = new System.Drawing.Point(0, 190);
             this.Btn_peliculas.Name = "Btn_peliculas";
             this.Btn_peliculas.Size = new System.Drawing.Size(180, 45);
             this.Btn_peliculas.TabIndex = 1;
@@ -231,29 +250,27 @@
             // 
             this.Tmr_menu.Interval = 10;
             // 
-            // Btn_salir
+            // Btn_reservas
             // 
-            this.Btn_salir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Btn_salir.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.Btn_salir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.Btn_salir.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.Btn_salir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.Btn_salir.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.Btn_salir.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Btn_salir.ForeColor = System.Drawing.Color.White;
-            this.Btn_salir.Location = new System.Drawing.Point(-10, 601);
-            this.Btn_salir.Name = "Btn_salir";
-            this.Btn_salir.Size = new System.Drawing.Size(180, 45);
-            this.Btn_salir.TabIndex = 4;
-            this.Btn_salir.Text = "Cerrar sesión";
-            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
+            this.Btn_reservas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_reservas.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_reservas.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_reservas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_reservas.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_reservas.FillColor = System.Drawing.Color.DeepSkyBlue;
+            this.Btn_reservas.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_reservas.ForeColor = System.Drawing.Color.White;
+            this.Btn_reservas.Location = new System.Drawing.Point(0, 439);
+            this.Btn_reservas.Name = "Btn_reservas";
+            this.Btn_reservas.Size = new System.Drawing.Size(170, 45);
+            this.Btn_reservas.TabIndex = 6;
+            this.Btn_reservas.Text = "Reservas";
+            this.Btn_reservas.Click += new System.EventHandler(this.Btn_reservas_Click);
             // 
             // AdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1163, 663);
             this.Controls.Add(this.Pnl_menu_left);
@@ -287,5 +304,6 @@
         private Guna.UI2.WinForms.Guna2Button Btn_usuarios;
         private Guna.UI2.WinForms.Guna2Button Btn_funciones;
         private Guna.UI2.WinForms.Guna2Button Btn_salir;
+        private Guna.UI2.WinForms.Guna2Button Btn_reservas;
     }
 }

@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,29 +11,28 @@ using System.Windows.Forms;
 
 namespace ReservaCine
 {
-    public partial class UserReserva: Form
+    public partial class AdminReserva : Form
     {
-        private Usuario usuario;
-        List<Pelicula> peliculas;
+        CrudUsuario dbUsuario;
+        List<Usuario> usuarios;
         CrudPelicula dbPelicula;
-        List<Sala> salas;
+        List<Pelicula> peliculas;
         CrudSala dbSala;
-        List<Funcion> funciones;
+        List<Sala> salas;
         CrudFuncion dbFuncion;
-        List<Asiento> asientos;
+        List<Funcion> funciones;
         CrudAsiento dbAsiento;
-        List<Reserva> reservas;
         CrudReserva dbReserva;
+        List<Reserva> reservas;
         List<ReservaAsiento> reserva_asientos;
-
-
-        public UserReserva(Usuario usuario)
+        public AdminReserva()
         {
             InitializeComponent();
 
-            this.usuario = usuario;
-            Lbl_reservas.Text = "Reservas";
-            Lbl_usuario.Text = usuario.Nombre;
+            Lbl_reservas.Text = "RESERVAS";
+
+            dbUsuario = new CrudUsuario();
+            usuarios = dbUsuario.GetUsuarios();
 
             dbPelicula = new CrudPelicula();
             peliculas = dbPelicula.GetPeliculas();
@@ -48,36 +46,60 @@ namespace ReservaCine
             dbAsiento = new CrudAsiento();
 
             dbReserva = new CrudReserva();
-            reservas = dbReserva.GetReservasByUser(usuario.IdUsuario);
+            reservas = dbReserva.GetReservas(); 
             reserva_asientos = dbReserva.GetReservaAsiento();
 
-            LoadReservas(usuario.IdUsuario);
-            CargarFotoUsuario(usuario);
+            LoadReservas();
         }
 
-        private void LoadReservas(int id_usuario)
+        private void LoadReservas()
         {
             Flp_reservas.Controls.Clear();
 
+            // Obtener TODAS las reservas 
+            reservas = dbReserva.GetReservas();
+            reserva_asientos = dbReserva.GetReservaAsiento();
+
             foreach (var reserva in reservas)
             {
+                // Obtener usuario
+                Usuario usu = usuarios.First(u => u.IdUsuario == reserva.IdUsuario);
+
+                // Obtener función
                 Funcion funcion = funciones.First(f => f.IdFuncion == reserva.IdFuncion);
+
+                // Película y sala
                 Pelicula pelicula = peliculas.First(p => p.IdPelicula == funcion.IdPelicula);
                 Sala sala = salas.First(s => s.IdSala == funcion.IdSala);
 
+                // Asientos disponibles para esa función
                 var asientosFuncion = dbAsiento.GetAsientos(funcion.IdFuncion);
 
-                List<ReservaAsiento> asientosList = reserva_asientos.Where(a => a.IdReserva == reserva.IdReserva).ToList();
-                string listaAsientos = string.Join(", ", asientosList.Select(a => asientosFuncion.First(x => x.IdAsiento == a.IdAsiento).Codigo));
+                // Asientos de esta reserva
+                List<ReservaAsiento> asientosList = reserva_asientos
+                    .Where(a => a.IdReserva == reserva.IdReserva)
+                    .ToList();
 
-                var card = new UC_UserReserva();
+                string listaAsientos = string.Join(", ",
+                    asientosList.Select(a => asientosFuncion.First(x => x.IdAsiento == a.IdAsiento).Codigo)
+                );
+
+                // Crear Card Admin
+                var card = new UC_ListReserva();
                 card.IdReserva = reserva.IdReserva;
 
-                card.Configurar(pelicula.Titulo, sala.Nombre, listaAsientos, funcion.Fecha, funcion.Horario);
+                card.Configurar(
+                    usu.Correo,       // correo del usuario
+                    pelicula.Titulo,
+                    sala.Nombre,
+                    listaAsientos,
+                    funcion.Fecha,
+                    funcion.Horario
+                );
 
                 card.EliminarReserva += (s, e) => EliminarReserva(reserva);
-                Flp_reservas.Controls.Add(card);
 
+                Flp_reservas.Controls.Add(card);
             }
         }
 
@@ -111,10 +133,10 @@ namespace ReservaCine
                 dbReserva.DeleteReserva(reserva.IdReserva);
 
                 //Recargar datos en memoria
-                reservas = dbReserva.GetReservasByUser(usuario.IdUsuario);
+                reservas = dbReserva.GetReservas();
                 reserva_asientos = dbReserva.GetReservaAsiento();
 
-                LoadReservas(usuario.IdUsuario);
+                LoadReservas();
 
                 MessageBox.Show("La reserva ha sido eliminada correctamente.");
             }
@@ -125,12 +147,31 @@ namespace ReservaCine
 
         }
 
-        private void LoadReservasFiltradas(List<Reserva> reservasFiltradas)
+        private void FiltrarReservas(string texto)
         {
             Flp_reservas.Controls.Clear();
 
+            // Si no escribió nada, mostrar todas las reservas
+            if (string.IsNullOrWhiteSpace(texto))
+            {
+                LoadReservas();
+                return;
+            }
+
+            string filtro = texto.ToLower();
+
+            // Filtrar reservas según el correo del usuario
+            var reservasFiltradas = reservas
+                .Where(r =>
+                {
+                    Usuario u = usuarios.First(x => x.IdUsuario == r.IdUsuario);
+                    return u.Correo.ToLower().Contains(filtro);
+                })
+                .ToList();
+
             foreach (var reserva in reservasFiltradas)
             {
+                Usuario usu = usuarios.First(u => u.IdUsuario == reserva.IdUsuario);
                 Funcion funcion = funciones.First(f => f.IdFuncion == reserva.IdFuncion);
                 Pelicula pelicula = peliculas.First(p => p.IdPelicula == funcion.IdPelicula);
                 Sala sala = salas.First(s => s.IdSala == funcion.IdSala);
@@ -142,14 +183,14 @@ namespace ReservaCine
                     .ToList();
 
                 string listaAsientos = string.Join(", ",
-                    asientosList.Select(a =>
-                        asientosFuncion.First(x => x.IdAsiento == a.IdAsiento).Codigo
-                    ));
+                    asientosList.Select(a => asientosFuncion.First(x => x.IdAsiento == a.IdAsiento).Codigo)
+                );
 
-                var card = new UC_UserReserva();
+                var card = new UC_ListReserva();
                 card.IdReserva = reserva.IdReserva;
 
                 card.Configurar(
+                    usu.Correo,
                     pelicula.Titulo,
                     sala.Nombre,
                     listaAsientos,
@@ -162,27 +203,10 @@ namespace ReservaCine
                 Flp_reservas.Controls.Add(card);
             }
         }
+
         private void Txt_buscar_TextChanged(object sender, EventArgs e)
         {
-            string texto = NormalizarTexto(Txt_buscar.Text);
-
-            // Si está vacío, mostramos todas las reservas
-            if (string.IsNullOrEmpty(texto))
-            {
-                LoadReservas(usuario.IdUsuario);
-                return;
-            }
-
-            // Filtrar las reservas por nombre de película
-            var filtradas = reservas.Where(r =>
-            {
-                var funcion = funciones.First(f => f.IdFuncion == r.IdFuncion);
-                var pelicula = peliculas.First(p => p.IdPelicula == funcion.IdPelicula);
-
-                return pelicula.Titulo.ToLower().Contains(texto);
-            }).ToList();
-
-            LoadReservasFiltradas(filtradas);
+            FiltrarReservas(NormalizarTexto(Txt_buscar.Text));
         }
 
         //Quita tildes y pasa a minusculas el texto ingresado
@@ -198,8 +222,29 @@ namespace ReservaCine
         private void Btn_peliculas_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserHome userHome = new UserHome(usuario);
-            userHome.Show();
+            AdminHome adminHome = new AdminHome();
+            adminHome.Show();
+        }
+
+        private void Btn_salas_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminSala adminSala = new AdminSala();
+            adminSala.Show();
+        }
+
+        private void Btn_funciones_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminFuncion adminFuncion = new AdminFuncion();
+            adminFuncion.Show();
+        }
+
+        private void Btn_usuarios_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminUsuario adminUsuario = new AdminUsuario();
+            adminUsuario.Show();
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
@@ -209,59 +254,9 @@ namespace ReservaCine
             login.Show();
         }
 
-        private void UserReserva_FormClosing(object sender, FormClosingEventArgs e)
+        private void AdminReserva_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
-        }
-
-        private void CargarFotoUsuario(Usuario usuario)
-        {
-            // Si no hay imagen, usar una ruta relativa por defecto
-            string rutaRelativa = string.IsNullOrEmpty(usuario.Imagen)
-                ? "ImagenesUsuarios\\default.jpg"
-                : usuario.Imagen;
-
-            // Construir la ruta física completa a partir del directorio base del proyecto
-            string rutaFisica = Path.GetFullPath(
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\", rutaRelativa)
-            );
-
-            // Liberar imagen previa para evitar bloqueo
-            if (Pbx_usuario.Image != null)
-            {
-                Pbx_usuario.Image.Dispose();
-                Pbx_usuario.Image = null;
-            }
-
-            // Cargar imagen si existe
-            if (File.Exists(rutaFisica))
-            {
-                using (var stream = new FileStream(rutaFisica, FileMode.Open, FileAccess.Read))
-                {
-                    Pbx_usuario.Image = Image.FromStream(stream);
-                }
-            }
-            else
-            {
-                // Si no existe, carga el placeholder por defecto
-                string rutaDefault = Path.GetFullPath(
-                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\ImagenesUsuarios\default.jpg")
-                );
-
-                if (File.Exists(rutaDefault))
-                {
-                    using (var stream = new FileStream(rutaDefault, FileMode.Open, FileAccess.Read))
-                    {
-                        Pbx_usuario.Image = Image.FromStream(stream);
-                    }
-                }
-                else
-                {
-                    Pbx_usuario.Image = null;
-                }
-            }
-
-            Pbx_usuario.SizeMode = PictureBoxSizeMode.Zoom;
         }
     }
 }

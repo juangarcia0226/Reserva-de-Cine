@@ -150,5 +150,19 @@ namespace ReservaCine
                 .ToArray()
             ).ToLower();
         }
+
+        private void Btn_reservas_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminReserva adminReserva = new AdminReserva();
+            adminReserva.Show();
+        }
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 form = new Form1();
+            form.Show();
+        }
     }
 }

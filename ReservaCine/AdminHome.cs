@@ -162,5 +162,12 @@ namespace ReservaCine
             Form1 loginForm = new Form1();
             loginForm.Show();
         }
+
+        private void Btn_reservas_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AdminReserva adminReserva = new AdminReserva();
+            adminReserva.Show();
+        }
     }
 }

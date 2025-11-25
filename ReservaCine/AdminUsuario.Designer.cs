@@ -40,6 +40,8 @@
             this.Btn_guardar = new Guna.UI2.WinForms.Guna2Button();
             this.Lbl_usuario = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.Pnl_formUsuarios = new Guna.UI2.WinForms.Guna2Panel();
+            this.Btn_reservas = new Guna.UI2.WinForms.Guna2Button();
+            this.Btn_salir = new Guna.UI2.WinForms.Guna2Button();
             this.Pnl_menu_left.SuspendLayout();
             this.Pnl_usuario.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +49,8 @@
             // Pnl_menu_left
             // 
             this.Pnl_menu_left.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Pnl_menu_left.Controls.Add(this.Btn_salir);
+            this.Pnl_menu_left.Controls.Add(this.Btn_reservas);
             this.Pnl_menu_left.Controls.Add(this.Btn_funciones);
             this.Pnl_menu_left.Controls.Add(this.Btn_usuarios);
             this.Pnl_menu_left.Controls.Add(this.Btn_salas);
@@ -68,7 +72,7 @@
             this.Btn_funciones.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Btn_funciones.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_funciones.ForeColor = System.Drawing.Color.White;
-            this.Btn_funciones.Location = new System.Drawing.Point(0, 340);
+            this.Btn_funciones.Location = new System.Drawing.Point(0, 312);
             this.Btn_funciones.Name = "Btn_funciones";
             this.Btn_funciones.Size = new System.Drawing.Size(180, 45);
             this.Btn_funciones.TabIndex = 25;
@@ -85,7 +89,7 @@
             this.Btn_usuarios.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Btn_usuarios.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_usuarios.ForeColor = System.Drawing.Color.White;
-            this.Btn_usuarios.Location = new System.Drawing.Point(3, 404);
+            this.Btn_usuarios.Location = new System.Drawing.Point(3, 376);
             this.Btn_usuarios.Name = "Btn_usuarios";
             this.Btn_usuarios.Size = new System.Drawing.Size(180, 45);
             this.Btn_usuarios.TabIndex = 24;
@@ -101,7 +105,7 @@
             this.Btn_salas.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Btn_salas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_salas.ForeColor = System.Drawing.Color.White;
-            this.Btn_salas.Location = new System.Drawing.Point(0, 278);
+            this.Btn_salas.Location = new System.Drawing.Point(0, 250);
             this.Btn_salas.Name = "Btn_salas";
             this.Btn_salas.Size = new System.Drawing.Size(180, 45);
             this.Btn_salas.TabIndex = 2;
@@ -118,7 +122,7 @@
             this.Btn_peliculas.FillColor = System.Drawing.Color.DeepSkyBlue;
             this.Btn_peliculas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Btn_peliculas.ForeColor = System.Drawing.Color.White;
-            this.Btn_peliculas.Location = new System.Drawing.Point(0, 218);
+            this.Btn_peliculas.Location = new System.Drawing.Point(0, 190);
             this.Btn_peliculas.Name = "Btn_peliculas";
             this.Btn_peliculas.Size = new System.Drawing.Size(180, 45);
             this.Btn_peliculas.TabIndex = 1;
@@ -218,6 +222,40 @@
             this.Pnl_formUsuarios.TabIndex = 21;
             this.Pnl_formUsuarios.Visible = false;
             // 
+            // Btn_reservas
+            // 
+            this.Btn_reservas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_reservas.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_reservas.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_reservas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_reservas.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_reservas.FillColor = System.Drawing.Color.DeepSkyBlue;
+            this.Btn_reservas.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_reservas.ForeColor = System.Drawing.Color.White;
+            this.Btn_reservas.Location = new System.Drawing.Point(3, 441);
+            this.Btn_reservas.Name = "Btn_reservas";
+            this.Btn_reservas.Size = new System.Drawing.Size(170, 45);
+            this.Btn_reservas.TabIndex = 26;
+            this.Btn_reservas.Text = "Reservas";
+            this.Btn_reservas.Click += new System.EventHandler(this.Btn_reservas_Click);
+            // 
+            // Btn_salir
+            // 
+            this.Btn_salir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_salir.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_salir.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.Btn_salir.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.Btn_salir.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.Btn_salir.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.Btn_salir.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Btn_salir.ForeColor = System.Drawing.Color.White;
+            this.Btn_salir.Location = new System.Drawing.Point(-7, 606);
+            this.Btn_salir.Name = "Btn_salir";
+            this.Btn_salir.Size = new System.Drawing.Size(180, 45);
+            this.Btn_salir.TabIndex = 27;
+            this.Btn_salir.Text = "Cerrar sesión";
+            this.Btn_salir.Click += new System.EventHandler(this.Btn_salir_Click);
+            // 
             // AdminUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -253,5 +291,7 @@
         private Guna.UI2.WinForms.Guna2Panel Pnl_formUsuarios;
         private Guna.UI2.WinForms.Guna2Button Btn_usuarios;
         private Guna.UI2.WinForms.Guna2Button Btn_funciones;
+        private Guna.UI2.WinForms.Guna2Button Btn_reservas;
+        private Guna.UI2.WinForms.Guna2Button Btn_salir;
     }
 }
