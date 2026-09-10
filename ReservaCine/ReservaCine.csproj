@@ -33,13 +33,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,14 +68,201 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminFuncion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminFuncion.Designer.cs">
+      <DependentUpon>AdminFuncion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminHome.Designer.cs">
+      <DependentUpon>AdminHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminReserva.Designer.cs">
+      <DependentUpon>AdminReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminSala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminSala.Designer.cs">
+      <DependentUpon>AdminSala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminUsuario.Designer.cs">
+      <DependentUpon>AdminUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asiento.cs" />
+    <Compile Include="CifradoPSW.cs" />
+    <Compile Include="Conexion.cs" />
+    <Compile Include="CrudAsiento.cs" />
+    <Compile Include="CrudFuncion.cs" />
+    <Compile Include="CrudPelicula.cs" />
+    <Compile Include="CrudReserva.cs" />
+    <Compile Include="CrudSala.cs" />
+    <Compile Include="CrudUsuario.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Funcion.cs" />
+    <Compile Include="Pelicula.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reserva.cs" />
+    <Compile Include="ReservaAsiento.cs" />
+    <Compile Include="Rol.cs" />
+    <Compile Include="Sala.cs" />
+    <Compile Include="UC_FormFuncion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_FormFuncion.Designer.cs">
+      <DependentUpon>UC_FormFuncion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_FormLogin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_FormLogin.Designer.cs">
+      <DependentUpon>UC_FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_FormPelicula.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_FormPelicula.Designer.cs">
+      <DependentUpon>UC_FormPelicula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_FormSala.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_FormSala.Designer.cs">
+      <DependentUpon>UC_FormSala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_FormUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_FormUsuario.Designer.cs">
+      <DependentUpon>UC_FormUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ListFuncion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ListFuncion.Designer.cs">
+      <DependentUpon>UC_ListFuncion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ListReserva.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ListReserva.Designer.cs">
+      <DependentUpon>UC_ListReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ListSala.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ListSala.Designer.cs">
+      <DependentUpon>UC_ListSala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_ListUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_ListUsuario.Designer.cs">
+      <DependentUpon>UC_ListUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Pelicula.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Pelicula.Designer.cs">
+      <DependentUpon>UC_Pelicula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_UserAsiento.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_UserAsiento.Designer.cs">
+      <DependentUpon>UC_UserAsiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_UserFuncion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_UserFuncion.Designer.cs">
+      <DependentUpon>UC_UserFuncion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_UserFuncionInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_UserFuncionInfo.Designer.cs">
+      <DependentUpon>UC_UserFuncionInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_UserPelicula.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_UserPelicula.Designer.cs">
+      <DependentUpon>UC_UserPelicula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_UserReserva.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_UserReserva.Designer.cs">
+      <DependentUpon>UC_UserReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserAsiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserAsiento.Designer.cs">
+      <DependentUpon>UserAsiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserContrasena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserContrasena.Designer.cs">
+      <DependentUpon>UserContrasena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserContrasena2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserContrasena2.Designer.cs">
+      <DependentUpon>UserContrasena2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserFuncion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserFuncion.Designer.cs">
+      <DependentUpon>UserFuncion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserHome.Designer.cs">
+      <DependentUpon>UserHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserReserva.Designer.cs">
+      <DependentUpon>UserReserva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs" />
+    <EmbeddedResource Include="AdminFuncion.resx">
+      <DependentUpon>AdminFuncion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminHome.resx">
+      <DependentUpon>AdminHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminReserva.resx">
+      <DependentUpon>AdminReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminSala.resx">
+      <DependentUpon>AdminSala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminUsuario.resx">
+      <DependentUpon>AdminUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -71,7 +274,47 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UC_FormFuncion.resx">
+      <DependentUpon>UC_FormFuncion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_FormLogin.resx">
+      <DependentUpon>UC_FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_FormPelicula.resx">
+      <DependentUpon>UC_FormPelicula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_FormSala.resx">
+      <DependentUpon>UC_FormSala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_FormUsuario.resx">
+      <DependentUpon>UC_FormUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Pelicula.resx">
+      <DependentUpon>UC_Pelicula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_UserFuncionInfo.resx">
+      <DependentUpon>UC_UserFuncionInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserAsiento.resx">
+      <DependentUpon>UserAsiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserContrasena.resx">
+      <DependentUpon>UserContrasena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserContrasena2.resx">
+      <DependentUpon>UserContrasena2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserFuncion.resx">
+      <DependentUpon>UserFuncion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserHome.resx">
+      <DependentUpon>UserHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserReserva.resx">
+      <DependentUpon>UserReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -82,9 +325,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\ojo.webp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ImagenesPeliculas\no_image.jpg" />
+    <None Include="Resources\5127040.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ImagenesUsuarios\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
